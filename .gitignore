@@ -69,4 +69,4 @@ node_modules/
 .dataconnect
 
 # google config
-**/config/journie-d4114-firebase-adminsdk-5ctdg-cc3b2f9ed5.json
+/config/journie-d4114-firebase-adminsdk-5ctdg-cc3b2f9ed5.json
