@@ -1,5 +1,27 @@
 {
     "sample-text": "Hello World!",
     "language-en": "English",
-    "language-fr": "French"
+    "language-fr": "French",
+    "nav-home": "Home",
+    "nav-mission": "Our Mission",
+    "nav-about": "About Us",
+    "sign-in": "Sign in",
+    "profile-picture": "Profile Picture",
+    "settings": "Settings",
+    "log-out": "Log Out",
+    "language-option": "Languages Preferences",
+    "journal": "Journal",
+    "user-guide": "User Guide",
+    "help": "Help",
+    "features": "Features",
+    "journal-book": "Journal Book",
+    "profile": "Profile",
+    "account": "Account",
+    "login-register": "Login/Register",
+    "user-dashboard": "User Dashboard",
+    "entries": "Entries",
+    "mood-tracker": "Mood Tracker",
+    "contact-us": "Contact Us",
+    "terms-conditions": "Terms and Conditions"
+
 }

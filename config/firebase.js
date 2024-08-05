@@ -2,7 +2,7 @@ const { initializeApp } = require('firebase/app');
 const { getFirestore } = require('firebase/firestore');
 const { getAuth } = require('firebase/auth');
 
-console.log("API Key:", process.env.FIREBASE_API_KEY);  // Add this line to debug
+// console.log("API Key:", process.env.FIREBASE_API_KEY);  // line to debug
 
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY,

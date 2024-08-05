@@ -1,5 +1,27 @@
 {
     "sample-text": "Bonjour le monde!",
     "language-en": "Anglais",
-    "language-fr": "Francais"
+    "language-fr": "Français",
+    "nav-home": "Accueil",
+    "nav-mission": "Notre Mission",
+    "nav-about": "À Propos de Nous",
+    "sign-in": "Se Connecter",
+    "profile-picture": "Photo de Profil",
+    "settings": "Paramètres",
+    "log-out": "Se Déconnecter",
+    "language-option": "Préférences Linguistiques",
+    "journal": "Journal",
+    "user-guide": "Guide Utilisateur",
+    "help": "Aide",
+    "features": "Fonctionnalités",
+    "journal-book": "Carnet de Journal",
+    "profile": "Profil",
+    "account": "Compte",
+    "login-register": "Connexion/Inscription",
+    "user-dashboard": "Tableau de Bord Utilisateur",
+    "entries": "Entrées",
+    "mood-tracker": "Suivi de l'Humeur",
+    "contact-us": "Nous Contacter",
+    "terms-conditions": "Conditions Générales"
 }
+
