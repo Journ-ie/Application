@@ -151,17 +151,19 @@ header {
 .hero {
     text-align: center;
     background-color: #33313D;
-    color: #FFFFCC;
     padding: 150px 20px;
 }
 
 .hero h1 {
     font-size: 4em;
+    color: #FFFFCC;
+
 }
 
 .hero p {
     font-size: 1.25em;
     font-style: italic;
+    color: #8DA891;
 }
 
 .hero h1, .hero p {
@@ -171,7 +173,7 @@ header {
 
 footer {
     background-color: #38353F;
-    color: #FFFFFF;
+    color: #FFFFCC;
     padding: 30px 80px;
     border-top: 1px solid #8DA891; 
 
@@ -211,7 +213,7 @@ footer {
 }
 
 .footer-links .column ul li a {
-    color: #FFFFFF;
+    color: #FFFFCC;
     text-decoration: none;
 }
 
