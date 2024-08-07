@@ -48,5 +48,35 @@
     "email": "Email",
     "enter-email": "Enter your email",
     "re-enter-password": "Re-Enter Password",
-    "already-have-account": "Already have an account?"
+    "already-have-account": "Already have an account?",
+    "message": "Message",
+    "submit": "Submit",
+    "reach-us": "Directly Reach Us",
+    "journal-user-guide": "The Journal section allows you to enter and manage your daily logs. You can view and organise both old and recent entries using labels, as well as edit or delete them. Each day features an inspirational quote to motivate your personal development. Creating a new entry is simple: click the plus icon at the top of the screen or browse through your past pictures in the memory view.",
+    "create-entry": "Create an Entry",
+    "create-entry-user-guide": "When creating a new entry, you can add a title, labels, and media. Write your log in the provided text area and submit it by clicking the button at the top right.",
+    "mood-tracker-user-guide": "The Mood Tracker helps you monitor your mood throughout the week. You're encouraged to log your daily mood, which will be reflected in your profile system, giving you an overview of your week's emotional trends.",
+    "deactivate-account": "Deactivate Account",
+    "deactivate-account-user-guide": "If you decide to stop using Journ.ie, you can delete your account through the settings in your profile. At the bottom of the settings page, there is a button to deactivate your account. If you have any concerns or need assistance, please reach out to us via the Contact Form above.",
+    "terms-and-conditions": "Terms and Conditions",
+    "introduction": "Introduction",
+    "introduction-content": "By using the services of Journ.ie, you agree to comply with and be bound by the following terms and conditions. These terms govern your use of our services and set out the rights and responsibilities of all users.",
+    "data-processing": "Data Processing",
+    "data-processing-content": "In accordance with the General Data Protection Regulation (GDPR), we are committed to ensuring that your personal data is processed lawfully, fairly, and transparently. By using our services, you consent to the collection and use of your data as described in this policy.",
+    "types-of-data-collected": "Types of Data Collected",
+    "types-of-data-collected-content": "We may collect the following types of data:\n- Personal identification information (Name, email address, etc.)\n- Usage data (Log entries, mood tracker data, etc.)\n- Technical data (IP address, browser type, etc.)",
+    "use-of-data": "Use of Data",
+    "use-of-data-content": "The data we collect is used to:\n- Provide and maintain our services\n- Improve and personalise your user experience\n- Communicate with you, including sending updates and notifications\n- Ensure compliance with legal obligations",
+    "data-sharing-and-security": "Data Sharing and Security",
+    "data-sharing-and-security-content": "We do not share your personal data with third parties except as required by law or with your explicit consent. We implement appropriate technical and organisational measures to protect your data against unauthorised access, alteration, disclosure, or destruction.",
+    "your-rights": "Your Rights",
+    "your-rights-content": "Under GDPR, you have the following rights regarding your personal data:\n- The right to access – You have the right to request copies of your personal data.\n- The right to rectification – You have the right to request correction of any inaccurate or incomplete data.\n- The right to erasure – You have the right to request deletion of your personal data under certain conditions.\n- The right to restrict processing – You have the right to request restriction of processing of your personal data under certain conditions.\n- The right to data portability – You have the right to request transfer of your data to another organisation or directly to you under certain conditions.\n- The right to object – You have the right to object to the processing of your personal data under certain conditions.",
+    "changes-to-these-terms": "Changes to These Terms",
+    "changes-to-these-terms-content": "We reserve the right to update these terms at any time. We will notify you of any changes by posting the new terms on our website. Your continued use of the service after any changes signifies your acceptance of the new terms.",
+    "contact-us-content": "If you have any questions or concerns about these terms or our data processing practices, please contact us via our Contact Form.",
+    "chat-gpt": "Disclaimer",
+    "chat-gpt-content": "Content of Terms and Conditions are taken from ChatGPT as a text sample."
+
+
+
 }

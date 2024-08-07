@@ -10,8 +10,10 @@
     <script type="module" defer src="init.js"></script>
 
     <!--Stylesheets-->
-    <link rel="stylesheet" href="stylesheets/main.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="stylesheets/web-main.css">
+    <link rel="stylesheet" href="stylesheets/mobile-main.css">
+    <link rel="stylesheet" href="stylesheets/help.css">
     
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
@@ -23,46 +25,216 @@
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-performance-compat.js"></script>
-
-    <!--Stylesheets-->
-    <link rel="stylesheets" href="stylesheets/main.css">
 </head>
+
 <body onload="loadLanguage('en')">
+    <header>
+        <div class="nav-bar">
+            <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
 
-    <button onclick="loadLanguage('en')" data-key="language-en">English</button>
-    <button onclick="loadLanguage('fr')" data-key="language-fr">French</button>
-    <h1 data-key="sample-text">Testing 02 Different Languages</h1>
+            <div class="nav-items">
+                <div class="nav-items-section">
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/" data-key="nav-home">Home</a></li>
+                            <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                            <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                        </ul>
+                    </nav>
+                    <a href="sign-in.html" class="login-button-link" data-key="sign-in">Sign In</a>
+                </div>
+                <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
+                    <div class="dropdown">
+                        <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
 
+                        <div class="dropdown-content">
+                            <div class="languages">
+                                <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                                <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                                <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                            </div>
 
-        
-    
+                            <div class="profile-menu">
+                                <a href="setting.html" data-key="settings">Settings</a>
+                                <a href="sign-in.html" data-key="log-out">Log Out</a>
+                        
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </header>
+
     <section class="hero">
-        <h1>Journ.ie</h1>
-        <p>'Solas Anama'</p>
-    </section>
-    
-    <section class="cards">
-        <div class="card">
-            <h3>Journaling Tools</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="card">
-            <h3>Mood Tracking</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="card">
-            <h3>Progress Tracker</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </section>
-    
-    <section class="mission">
-        <h2>Our Mission</h2>
-        <p>At Journ.ie, our mission is to provide a secure and intimate journaling platform where individuals can document, organise, and cherish their life’s moments. We believe in the power of personal reflection and its profound impact on well-being and growth. By offering a safe space free from public exposure, we enable users to express themselves freely and authentically.</p>
-        <p>At Journ.ie, we are more than just a journaling platform; we are a community committed to personal growth and self-discovery. Join us to connect deeply with your inner self and pursue your life goals with confidence and clarity.</p>
+        <div class="help-items">
+            <div id="contact-us" class="form">
+                <h2 data-key="contact-us">Contact Us</h2>
+                <h3 data-key="reach-us">Directly Reach US</h3>
+                <form>
+                    <label for="email" data-key="email">Email</label>
+                    <input type="text" class="email" name="email" data-key="enter-email">
+
+                    <label for="message" data-key="message">Message</label>
+                    <textarea id="messageBox" class="message" name="message" rows="10" cols="50" ></textarea>
+        
+                    <div class="buttons-form">
+                        <button class="submit" type="submit" class="submit" data-key="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        
+            <div id="user-guide" class="form">
+                <h2 data-key="user-guide">User Guide</h2>
+
+                <div id="journal-about" class="paragraph">
+                    <h3 data-key="journal">Journal</h3>
+                    <p data-key="journal-user-guide">
+                        The Journal section allows you to enter and manage your daily logs. You can view and organise both old and recent entries using labels, as well as edit or delete them. Each day features an inspirational quote to motivate your personal development. Creating a new entry is simple: click the plus icon at the top of the screen or browse through your past pictures in the memory view.
+                    </p>
+                </div>
+            
+                <div id="entries-about" class="paragraph">
+                    <h3 data-key="create-entry">Create an Entry</h3>
+                    <p data-key="create-entry-user-guide">
+                        When creating a new entry, you can add a title, labels, and media. Write your log in the provided text area and submit it by clicking the button at the top right.
+                    </p>
+                </div>
+            
+                <div id="mood-tracker-about" class="paragraph">
+                    <h3 data-key="mood-tracker">Mood Tracker</h3>
+                    <p data-key="mood-tracker-user-guide">
+                        The Mood Tracker helps you monitor your mood throughout the week. You're encouraged to log your daily mood, which will be reflected in your profile system, giving you an overview of your week's emotional trends.
+                    </p>
+                </div>
+            
+                <div id="deactivate-about" class="paragraph">
+                    <h3 data-key="deactivate-account">Deactivate Account</h3>
+                    <p data-key="deactivate-account-user-guide">
+                        If you decide to stop using Journ.ie, you can delete your account through the settings in your profile. At the bottom of the settings page, there is a button to deactivate your account. If you have any concerns or need assistance, please reach out to us via the Contact Form above.
+                    </p>
+                </div>              
+            </div>
+
+            <div id="terms-conditions" class="form">
+                <h2 data-key="terms-and-conditions">Terms and Conditions</h2>
+            
+                <div class="paragraph">
+                    <h3 data-key="introduction">Introduction</h3>
+                    <p data-key="introduction-content">
+                        By using the services of Journ.ie, you agree to comply with and be bound by the following terms and conditions. These terms govern your use of our services and set out the rights and responsibilities of all users.
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="data-processing">Data Processing</h3>
+                    <p data-key="data-processing-content">
+                        In accordance with the General Data Protection Regulation (GDPR), we are committed to ensuring that your personal data is processed lawfully, fairly, and transparently. By using our services, you consent to the collection and use of your data as described in this policy.
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="types-of-data-collected">Types of Data Collected</h3>
+                    <p data-key="types-of-data-collected-content">
+                        We may collect the following types of data:
+                        - Personal identification information (Name, email address, etc.)
+                        - Usage data (Log entries, mood tracker data, etc.)
+                        - Technical data (IP address, browser type, etc.)
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="use-of-data">Use of Data</h3>
+                    <p data-key="use-of-data-content">
+                        The data we collect is used to:
+                        - Provide and maintain our services
+                        - Improve and personalise your user experience
+                        - Communicate with you, including sending updates and notifications
+                        - Ensure compliance with legal obligations
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="data-sharing-and-security">Data Sharing and Security</h3>
+                    <p data-key="data-sharing-and-security-content">
+                        We do not share your personal data with third parties except as required by law or with your explicit consent. We implement appropriate technical and organisational measures to protect your data against unauthorised access, alteration, disclosure, or destruction.
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="your-rights">Your Rights</h3>
+                    <p data-key="your-rights-content">
+                        Under GDPR, you have the following rights regarding your personal data:
+                        - The right to access – You have the right to request copies of your personal data.
+                        - The right to rectification – You have the right to request correction of any inaccurate or incomplete data.
+                        - The right to erasure – You have the right to request deletion of your personal data under certain conditions.
+                        - The right to restrict processing – You have the right to request restriction of processing of your personal data under certain conditions.
+                        - The right to data portability – You have the right to request transfer of your data to another organisation or directly to you under certain conditions.
+                        - The right to object – You have the right to object to the processing of your personal data under certain conditions.
+                    </p>
+                </div>
+            
+                <div class="paragraph">
+                    <h3 data-key="changes-to-these-terms">Changes to These Terms</h3>
+                    <p data-key="changes-to-these-terms-content">
+                        We reserve the right to update these terms at any time. We will notify you of any changes by posting the new terms on our website. Your continued use of the service after any changes signifies your acceptance of the new term
+                    </p>
+                </div>
+
+                <div class="paragraph">
+                    <h3 data-key="chat-gpt">Disclaimer</h3>
+                    <p data-key="chat-gpt-content">
+                       Content of Terms and Conditions are taken from ChatGPT as a text sample.
+                    </p> 
+                </div>
+            </div>
     </section>
 
- 
+    <footer>
+        <div class="footer-items">
+            <div class="footer-links">
+                <div class="column">
+                    <h3 data-key="nav-home">Home</h3>
+                    <ul>
+                        <li><a href="/#features" data-key="features">Features</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="journal">Journal</h3>
+                    <ul>
+                        <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
+                        <li><a href="setting.html" data-key="profile">Profile</a></li>
+                        <li><a href="setting.html" data-key="account">Account</a></li>
+                        <li><a href="sign-in.html" data-key="login-register">Login/Register</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="user-guide">User Guide</h3>
+                    <ul>
+                        <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
+                        <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
+                        <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
+                        <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="help">Help</h3>
+                    <ul>
+                        <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
+                        <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
+                <p data-key="signature">© Zedev 2024</p>
+            </div>
+        </div>
+    
+        
+    </footer>
 
 </body>
 </html>
