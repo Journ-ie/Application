@@ -10,8 +10,10 @@
     <script type="module" defer src="init.js"></script>
 
     <!--Stylesheets-->
-    <link rel="stylesheet" href="stylesheets/main.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="stylesheets/web-main.css">
+    <link rel="stylesheet" href="stylesheets/mobile-main.css">
+    <link rel="stylesheet" href="stylesheets/setting.css">
     
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
@@ -23,46 +25,155 @@
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-performance-compat.js"></script>
-
-    <!--Stylesheets-->
-    <link rel="stylesheets" href="stylesheets/main.css">
 </head>
+
 <body onload="loadLanguage('en')">
+    <header>
+        <div class="nav-bar">
+            <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
 
-    <button onclick="loadLanguage('en')" data-key="language-en">English</button>
-    <button onclick="loadLanguage('fr')" data-key="language-fr">French</button>
-    <h1 data-key="sample-text">Testing 02 Different Languages</h1>
+            <div class="nav-items">
+                <div class="nav-items-section">
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/" data-key="nav-home">Home</a></li>
+                            <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                            <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                        </ul>
+                    </nav>
+                    <a href="sign-in.html" class="login-button-link" data-key="sign-in">Sign In</a>
+                </div>
+                <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
+                    <div class="dropdown">
+                        <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
 
+                        <div class="dropdown-content">
+                            <div class="languages">
+                                <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                                <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                                <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                            </div>
 
+                            <div class="profile-menu">
+                                <a href="setting.html" data-key="settings">Settings</a>
+                                <a href="sign-in.html" data-key="log-out">Log Out</a>
+                        
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="setting-items">
+            <div id="return-save">
+                <div class="return">
+                    <a href="journal.html" class="return-btn"><i class="fa-solid fa-arrow-left"></i>
+                    <h4 data-key="return-journal">Return to Journal</h4></a>
+                </div>
+                <div class="save">
+                    <button type="submit" class="save-changes" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+            <div id="setting-form" class="form">
+                <h2 data-key="settings">Setting</h2>
+                <form>
+                    <div class="profile-setting section">
+                        <h3 data-key="profile">Profile</h3>
+                        <div class="items">
+                            <div class="profile-container">
+                                <div class="profile-picture-setting"></div>
+                                <button class="change-photo-button" data-key="change-photo">Change Photo</button>
+                            </div>
+                            <div class="profile-information">
+                                <div class="first-last-name">
+                                    <div>
+                                        <label for="first-name" data-key="first-name">First Name</label>
+                                        <input type="text" id="first-name" name="first-name" data-key="enter-first-name">    
+                                    </div>
+                                    <div>
+                                        <label for="last-name" data-key="last-name">Last Name</label>
+                                        <input type="text" id="last-name" name="last-name" data-key="enter-last-name">  
+                                    </div>
+                                </div>
+                                <div class="dob">
+                                    <label for="dob" data-key="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" data-key="enter-dob">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="account-setting section">
+                        <h3 data-key="account">Account</h3>
+                        <div class="items">
+                            <label for="username" data-key="update-username">Update Username</label>
+                            <input type="text" class="username" name="username" data-key="enter-username">
+                
+                            <label for="email" data-key="update-email">Update Email</label>
+                            <input type="email" id="email" name="email" data-key="enter-email">
+                
+                            <button type="submit" class="change-password" data-key="change-password">Change Password</button>
+                        </div>
+
+                    <div class="deactivation section">
+                        <h3 data-key="deactivation">Deactivation</h3>
+                        <div class="items">
+                            <button type="submit" class="delete-account" data-key="delete-account">Delete Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>        
+    </section>
+
+    <footer>
+        <div class="footer-items">
+            <div class="footer-links">
+                <div class="column">
+                    <h3 data-key="nav-home">Home</h3>
+                    <ul>
+                        <li><a href="/#features" data-key="features">Features</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="journal">Journal</h3>
+                    <ul>
+                        <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
+                        <li><a href="setting.html" data-key="profile">Profile</a></li>
+                        <li><a href="setting.html" data-key="account">Account</a></li>
+                        <li><a href="sign-in.html" data-key="login-register">Login/Register</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="user-guide">User Guide</h3>
+                    <ul>
+                        <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
+                        <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
+                        <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
+                        <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="help">Help</h3>
+                    <ul>
+                        <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
+                        <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
+                <p data-key="signature">© Zedev 2024</p>
+            </div>
+        </div>
+    
         
-    
-    <section class="hero">
-        <h1>Journ.ie</h1>
-        <p>'Solas Anama'</p>
-    </section>
-    
-    <section class="cards">
-        <div class="card">
-            <h3>Journaling Tools</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="card">
-            <h3>Mood Tracking</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-        <div class="card">
-            <h3>Progress Tracker</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </section>
-    
-    <section class="mission">
-        <h2>Our Mission</h2>
-        <p>At Journ.ie, our mission is to provide a secure and intimate journaling platform where individuals can document, organise, and cherish their life’s moments. We believe in the power of personal reflection and its profound impact on well-being and growth. By offering a safe space free from public exposure, we enable users to express themselves freely and authentically.</p>
-        <p>At Journ.ie, we are more than just a journaling platform; we are a community committed to personal growth and self-discovery. Join us to connect deeply with your inner self and pursue your life goals with confidence and clarity.</p>
-    </section>
-
- 
+    </footer>
 
 </body>
 </html>
