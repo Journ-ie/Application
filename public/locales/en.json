@@ -83,8 +83,15 @@
     "change-password": "Change Password",
     "delete-account": "Delete Account",
     "return-journal": "Return to Jounral",
-    "save-changes": "Save Changes"
-
-
-
+    "save-changes": "Save Changes",
+    "fullname": "User's Name",
+    "activity-label": "Activity",
+    "reflection-label": "Reflection",
+    "goal-label": "Goal",
+    "diary-label": "Diary",
+    "journey-label": "Journey",
+    "mood-message": "How are you feeling today?",
+    "log-title": "Title...",
+    "upload": "Upload",
+    "log-message": "How are you today?"
 }

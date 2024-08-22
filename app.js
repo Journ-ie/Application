@@ -43,6 +43,16 @@ app.get('/journal.html', (req, res) => {
     });
 });
 
+app.get('/log.html', (req, res) => {
+    const filePath = path.join(__dirname, 'views', 'log.html');
+    res.sendFile(filePath, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(404).send('Sorry, we cannot find that page!');
+        }
+    });
+});
+
 app.get('/setting.html', (req, res) => {
     const filePath = path.join(__dirname, 'views', 'setting.html');
     res.sendFile(filePath, function (err) {

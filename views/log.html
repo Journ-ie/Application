@@ -7,15 +7,14 @@
 
     <!--Scripts-->
     <script src="scripts/loadLanguage.js"></script>
-    <script src="scripts/log-reel.js" defer></script>
-
+    <script src="scripts/uploadMedia.js"></script>
     <script type="module" defer src="init.js"></script>
-    
+
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="stylesheets/web-main.css">
     <link rel="stylesheet" href="stylesheets/mobile-main.css">
-    <link rel="stylesheet" href="stylesheets/journal.css">
+    <link rel="stylesheet" href="stylesheets/log.css">
     
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
@@ -44,27 +43,6 @@
             </div>
             
             <div class="nav-items">
-                <div class="search-bar">
-                    <div class="filter-container">
-                        <button class="filter-button">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <div class="filter-dropdown">
-                            <div id="label-options">
-                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="activity-label">Activity</label>
-                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="reflection-label">Reflection</label>
-                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="goal-label">Goal</label>
-                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="diary-label">Diary</label>
-                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="journey-label">Journey</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="search-container">
-                        <input type="text" class="search-input">
-                        <button class="search-button"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-
                 <span id="user-name" class="user-name" data-key="fullname">Username</span>
                 <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
                 
@@ -81,7 +59,6 @@
                         <div class="profile-menu">
                             <a href="setting.html" data-key="settings">Settings</a>
                             <a href="sign-in.html" data-key="log-out">Log Out</a>
-                    
                         </div>
                     </div>
                 </div>
@@ -89,34 +66,43 @@
         </div>
     </header>
 
-    <section id="journal" class="hero">
-        <div class="journal-items">
-            <div class="post-bar form">
+    <section id="log" class="hero">
+        <div class="log-items">
+            <div id="return-submit">
+                <div class="return">
+                    <a href="journal.html" class="return-btn"><i class="fa-solid fa-arrow-left"></i>
+                    <h4 data-key="return-journal">Return to Journal</h4></a>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="submit" data-key="submit">Submit</button>
+                </div>
+            </div>
+            <div class="log-form form">
                 <form>
-                    <div class="divide">
-                        <a href="log.html" class="log-btn"><div id="add-post">
-                            <i class="fa-solid fa-plus"></i>                    
-                        </div></a>
-                        <div id="mood-tracker">
-                            <h2 data-key="mood-message">How are you feeling today?</h2>
-                            <div class="emotions">
-                                <button id="happy"><i class="fa-solid fa-face-laugh-beam"></i></button>
-                                <button id="okay"><i class="fa-solid fa-face-smile"></i></button>
-                                <button id="meh"><i class="fa-solid fa-face-meh"></i></button>
-                                <button id="sad"><i class="fa-solid fa-face-sad-tear"></i></button>
-                                <button id="angry"><i class="fa-solid fa-face-angry"></i></button>
+                    <div class="title-labels">
+                        <input type="text" class="log-title" name="log-title" placeholder="How are you today?" data-key="log-message">
+                        <div id="label-options">
+                            <label class="filter-option activity"><input type="checkbox" value="label-1" data-key="activity-label">Activity</label>
+                            <label class="filter-option reflection"><input type="checkbox" value="label-1" data-key="reflection-label">Reflection</label>
+                            <label class="filter-option goal"><input type="checkbox" value="label-1" data-key="goal-label">Goal</label>
+                            <label class="filter-option diary"><input type="checkbox" value="label-1" data-key="diary-label">Diary</label>
+                            <label class="filter-option journey"><input type="checkbox" value="label-1" data-key="journey-label">Journey</label>
+                        </div>
+                    </div>                    
+                    <div class="caption-content">
+                        <textarea id="messageBox" class="message" name="message" rows="20" cols="50"></textarea>    
+                    </div>
+                    <div class="medias">
+                        <div id="add-media"><i class="fa-solid fa-camera"></i></div>
+                        <div class="post-upload">
+                            <input type="file" id="media-upload" class="media-upload" accept="image/*,video/*" multiple>
+                            <div class="media-preview" id="media-preview">
+                                <!--Medias Uploaded to be added here***-->
                             </div>
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="post-reel">
-                <form>
-                    <div class="divide">
-                        <!--Posts will dynamically be added here.-->
-                    </div>
-                </form>
-            </div>            
+            </div>       
         </div>  
     </section>
 

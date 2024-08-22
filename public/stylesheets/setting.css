@@ -23,7 +23,6 @@
     font-size: 20px;
     text-align: left;
     transform: translateX(-30px);
-
 }
 
 .form input[type="text"],
@@ -32,15 +31,19 @@
 .form input[type="date"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+#first-name, #last-name, #dob {
+    margin: 15px 0;
 }
 
 .first-last-name, .dob {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+    margin: 10px 0;
 }
 
 #first-name, #last-name {
@@ -114,15 +117,16 @@ button:hover {
 
 .form button {
     width: 100%;
-    padding: 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 25px 0;
+    margin: 10px 0;
 }
 
 .account-setting .items {
     padding: 0 30px;
+    flex-direction: column;
+    gap: 20px; 
 }
 
 .deactivation button {
@@ -188,6 +192,10 @@ button:hover {
     margin: 0 auto; 
 }
 
+.profile-menu {
+    opacity: 1;
+}
+
 #return-save {
     border-radius: 5px; 
 }
@@ -206,10 +214,10 @@ button:hover {
     align-items: center;
 }
 
-.account-setting .items {
-    flex-direction: column;
-    gap: 20px; 
+.profile-picture {
+    opacity: 1;
 }
 
-
-
+.user-name {
+    padding: 0 10px;
+}

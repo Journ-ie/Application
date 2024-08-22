@@ -30,42 +30,41 @@
 <body onload="loadLanguage('en')">
     <header>
         <div class="nav-bar">
-            <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
-
+            <div class="nav-items-section">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/" data-key="nav-home">Home</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="nav-items">
-                <div class="nav-items-section">
-                    <nav>
-                        <ul class="nav-links">
-                            <li><a href="/" data-key="nav-home">Home</a></li>
-                            <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
-                            <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
-                        </ul>
-                    </nav>
-                    <a href="sign-in.html" class="login-button-link" data-key="sign-in">Sign In</a>
-                </div>
+                <span id="user-name" class="user-name" data-key="fullname">Username</span>
                 <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
-                    <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
 
-                        <div class="dropdown-content">
-                            <div class="languages">
-                                <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
-                                <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
-                                <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
-                            </div>
+                    <div class="dropdown-content">
+                        <div class="languages">
+                            <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                            <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                            <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                        </div>
 
-                            <div class="profile-menu">
-                                <a href="setting.html" data-key="settings">Settings</a>
-                                <a href="sign-in.html" data-key="log-out">Log Out</a>
-                        
-                            </div>
+                        <div class="profile-menu">
+                            <a href="setting.html" data-key="settings">Settings</a>
+                            <a href="sign-in.html" data-key="log-out">Log Out</a>
+                    
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
+    <section id="setting" class="hero">
         <div class="setting-items">
             <div id="return-save">
                 <div class="return">

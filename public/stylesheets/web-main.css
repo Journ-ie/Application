@@ -101,6 +101,8 @@ header {
     padding: 6px 10px;
     font-size: 16px;
     border: none;
+    box-shadow: 0 2px 25px #3e3b4b;
+
 }
   
 .dropdown {position: relative;}
@@ -229,3 +231,20 @@ footer {
     margin-left: auto; 
 }
 
+::-webkit-scrollbar {
+    width: 5px;      
+}
+
+::-webkit-scrollbar-track {
+    background: #33313D;          
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8DA891;         
+    border-radius: 10px;            
+    border: 1px solid #33313D;         
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #A8BFA6;        
+}
