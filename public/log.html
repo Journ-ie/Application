@@ -8,10 +8,8 @@
     <!--Scripts-->
     <script src="assets/scripts/loadLanguage.js"></script>
     <script src="assets/scripts/uploadMedia.js"></script>
-    <script type="module" src="assets/scripts/showToast.js"></script>
+    <script type="module" src="assets/scripts/addLog.js"></script>
     <script type="module" defer src="assets/scripts/init.js"></script>
-
-    <script src="assets/scripts/testupload.js" type="module" defer></script>
 
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -77,7 +75,7 @@
                     <h4 data-key="return-journal">Return to Journal</h4></a>
                 </div>
                 <div class="submit">
-                    <button type="submit" class="submit" data-key="submit">Submit</button>
+                    <button type="submit" class="submit" id="log-submit" data-key="submit">Submit</button>
                 </div>
             </div>
             <div class="log-form form">
@@ -85,12 +83,12 @@
                     <div class="title-labels">
                         <input type="text" class="log-title" name="log-title" placeholder="How are you today?" data-key="log-message">
                         <div id="label-options">
-                            <label class="filter-option activity"><input type="checkbox" value="label-1" data-key="activity-label">Activity</label>
-                            <label class="filter-option reflection"><input type="checkbox" value="label-1" data-key="reflection-label">Reflection</label>
-                            <label class="filter-option goal"><input type="checkbox" value="label-1" data-key="goal-label">Goal</label>
-                            <label class="filter-option diary"><input type="checkbox" value="label-1" data-key="diary-label">Diary</label>
-                            <label class="filter-option journey"><input type="checkbox" value="label-1" data-key="journey-label">Journey</label>
-                        </div>
+                            <label class="filter-option activity"><input type="checkbox" value="activity" data-key="activity-label">Activity</label>
+                            <label class="filter-option reflection"><input type="checkbox" value="reflection" data-key="reflection-label">Reflection</label>
+                            <label class="filter-option goal"><input type="checkbox" value="goal" data-key="goal-label">Goal</label>
+                            <label class="filter-option diary"><input type="checkbox" value="diary" data-key="diary-label">Diary</label>
+                            <label class="filter-option journey"><input type="checkbox" value="journey" data-key="journey-label">Journey</label>
+                        </div>                        
                     </div>                    
                     <div class="caption-content">
                         <textarea id="messageBox" class="message" name="message" rows="20" cols="50"></textarea>    

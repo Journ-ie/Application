@@ -251,6 +251,7 @@ footer {
 .toast {
     visibility: hidden;
     min-width: 250px; 
+    background-color: rgba(41, 178, 50, 0.8);
     color: #fff;
     text-align: center; 
     border-radius: 5px; 
@@ -269,7 +270,7 @@ footer {
 }
 
 .toast-success {
-    background-color: rgba(41, 94, 199, 0.8);
+    background-color: rgba(41, 178, 50, 0.8);
 }
 
 .toast-error {

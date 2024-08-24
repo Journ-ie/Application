@@ -15,12 +15,12 @@ document.querySelector('#register-form form').addEventListener('submit', async (
     const reEnterPassword = event.target['re-enter-password'].value.trim();
 
     if (!username || !firstName || !lastName || !dob || !email || !password || !reEnterPassword) {
-        showToast('All fields are required. Please complete the form to create an account.', 'success');
+        showToast('All fields are required. Please complete the form to create an account.', 'error');
         return;
     }
 
     if (password !== reEnterPassword) {
-        showToast('Passwords do not match!', 'success');
+        showToast('Passwords do not match!', 'error');
     }
 
     try {
@@ -42,9 +42,9 @@ document.querySelector('#register-form form').addEventListener('submit', async (
     } catch (error) {
         console.error('Error details:', error);
         if (error.code === 'auth/email-already-in-use') {
-            showToast('This email is already registered!', 'success');
+            showToast('This email is already registered!', 'error');
         } else {
-            showToast('Error registering user', 'success');
+            showToast('Error registering user', 'error');
         }
     }
 });
@@ -57,13 +57,13 @@ document.querySelector('#sign-in-form').addEventListener('submit', (event) => {
     const password = event.target.password.value.trim();  
 
     if (!email || !password) {
-        showToast('Please enter both email and password.', 'success');
+        showToast('Please enter both email and password.', 'error');
         return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        showToast('Please enter a valid email address.', 'success');
+        showToast('Please enter a valid email address.', 'error');
         return;
     }
 
@@ -73,13 +73,13 @@ document.querySelector('#sign-in-form').addEventListener('submit', (event) => {
         })
         .catch((error) => {
             if (error.code === 'auth/wrong-password') {
-                showToast('Incorrect password. Please try again.', 'success');
+                showToast('Incorrect password. Please try again.', 'error');
             } else if (error.code === 'auth/user-not-found') {
-                showToast('No user found with this email.', 'success');
+                showToast('No user found with this email.', 'error');
             } else if (error.code === 'auth/invalid-email') {
-                showToast('Invalid email address.', 'success');
+                showToast('Invalid email address.', 'error');
             } else {
-                showToast('Incorrect email or password. Please try again.', 'success');
+                showToast('Incorrect email or password. Please try again.', 'error');
             }
         });
 });
@@ -99,3 +99,26 @@ document.addEventListener("DOMContentLoaded", function() {
         signInForm.style.display = "block";
     });
 });
+
+
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    toastMessage.textContent = message;
+
+    toast.classList.remove('toast-success', 'toast-error');
+
+    if (type === 'error') {
+        toast.classList.add('toast-error');
+    } else {
+        toast.classList.add('toast-success');
+    }
+
+    toast.classList.add("show");
+    
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
+
