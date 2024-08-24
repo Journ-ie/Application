@@ -54,7 +54,7 @@ header {
 }
 
 .login-button-link {
-    display: inline-block;
+    display: none;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
