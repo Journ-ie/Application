@@ -8,6 +8,7 @@
     <!--Scripts-->
     <script src="assets/scripts/loadLanguage.js"></script>
     <script src="assets/scripts/uploadMedia.js"></script>
+    <script type="module" src="assets/scripts/showToast.js"></script>
     <script type="module" defer src="assets/scripts/init.js"></script>
 
     <script src="assets/scripts/testupload.js" type="module" defer></script>
@@ -151,9 +152,11 @@
                 <p data-key="signature">© Zedev 2024</p>
             </div>
         </div>
-    
-        
     </footer>
+
+    <div id="toast" class="toast">
+        <p id="toastMessage"></p>
+    </div>   
 
 </body>
 </html>

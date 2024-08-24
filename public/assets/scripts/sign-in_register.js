@@ -15,13 +15,12 @@ document.querySelector('#register-form form').addEventListener('submit', async (
     const reEnterPassword = event.target['re-enter-password'].value.trim();
 
     if (!username || !firstName || !lastName || !dob || !email || !password || !reEnterPassword) {
-        showToast('All fields are required. Please complete the form to create an account.');
+        showToast('All fields are required. Please complete the form to create an account.', 'success');
         return;
     }
 
     if (password !== reEnterPassword) {
-        showToast('Passwords do not match!');
-        return;
+        showToast('Passwords do not match!', 'success');
     }
 
     try {
@@ -43,9 +42,9 @@ document.querySelector('#register-form form').addEventListener('submit', async (
     } catch (error) {
         console.error('Error details:', error);
         if (error.code === 'auth/email-already-in-use') {
-            showToast('This email is already registered!');
+            showToast('This email is already registered!', 'success');
         } else {
-            showToast('Error registering user');
+            showToast('Error registering user', 'success');
         }
     }
 });
@@ -58,13 +57,13 @@ document.querySelector('#sign-in-form').addEventListener('submit', (event) => {
     const password = event.target.password.value.trim();  
 
     if (!email || !password) {
-        showToast('Please enter both email and password.');
+        showToast('Please enter both email and password.', 'success');
         return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        showToast('Please enter a valid email address.');
+        showToast('Please enter a valid email address.', 'success');
         return;
     }
 
@@ -74,26 +73,16 @@ document.querySelector('#sign-in-form').addEventListener('submit', (event) => {
         })
         .catch((error) => {
             if (error.code === 'auth/wrong-password') {
-                showToast('Incorrect password. Please try again.');
+                showToast('Incorrect password. Please try again.', 'success');
             } else if (error.code === 'auth/user-not-found') {
-                showToast('No user found with this email.');
+                showToast('No user found with this email.', 'success');
             } else if (error.code === 'auth/invalid-email') {
-                showToast('Invalid email address.');
+                showToast('Invalid email address.', 'success');
             } else {
-                showToast('Incorrect email or password. Please try again.');
+                showToast('Incorrect email or password. Please try again.', 'success');
             }
         });
 });
-
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    document.getElementById('toastMessage').textContent = message;
-    toast.classList.add("show");  
-    setTimeout(() => {
-        toast.classList.remove("show");  
-    }, 3000);
-}
 
 // Switch Forms
 document.addEventListener("DOMContentLoaded", function() {
