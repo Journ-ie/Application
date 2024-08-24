@@ -23,6 +23,9 @@ onAuthStateChanged(auth, (user) => {
         // User is signed in, you can access user information here
         console.log('User is signed in');
 
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+
         // Optionally, redirect to a protected page
         if (window.location.pathname === '/sign-in.html') {
             window.location.href = '/journal.html'; // Redirect to journal if already signed in
@@ -30,9 +33,9 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // No user is signed in
         console.log('No user is signed in');
-
+        console.log(window.location.pathname);
         // Optionally, redirect to login page
-        if (window.location.pathname !== '/sign-in.html' && window.location.pathname !== '/') {
+        if (window.location.pathname === '/journal.html' || window.location.pathname === '/log.html' || window.location.pathname === '/setting.html') {
             window.location.href = '/sign-in.html';
         }
     }
