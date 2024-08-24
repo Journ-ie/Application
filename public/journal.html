@@ -9,6 +9,7 @@
     <script src="assets/scripts/loadLanguage.js"></script>
     <script src="assets/scripts/log-reel.js" defer></script>
 
+    <script type="module" src="assets/scripts/authentication.js"></script>
     <script type="module" defer src="assets/scripts/init.js"></script>
     
     <!--Stylesheets-->
@@ -28,7 +29,13 @@
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
 </head>
 
+<div id="loading">
+    <div class="spinner"></div>
+</div>
+
+<div id="main-content" style="display: none;">
 <body onload="loadLanguage('en')">
+    
     <header>
         <div class="nav-bar">
             <div class="nav-items-section">
@@ -79,8 +86,7 @@
 
                         <div class="profile-menu">
                             <a href="setting.html" data-key="settings">Settings</a>
-                            <a href="sign-in.html" data-key="log-out">Log Out</a>
-                    
+                            <a href="sign-in.html" data-key="log-out" id="logout-link">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -167,4 +173,5 @@
     </footer>
 
 </body>
+</div>
 </html>

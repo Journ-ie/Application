@@ -21,7 +21,10 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, you can access user information here
-        console.log('User is signed in:', user);
+        console.log('User is signed in');
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
 
         // Optionally, redirect to a protected page
         if (window.location.pathname === '/sign-in.html') {
@@ -30,9 +33,9 @@ onAuthStateChanged(auth, (user) => {
     } else {
         // No user is signed in
         console.log('No user is signed in');
-
+        console.log(window.location.pathname);
         // Optionally, redirect to login page
-        if (window.location.pathname !== '/sign-in.html') {
+        if (window.location.pathname === '/journal.html' || window.location.pathname === '/log.html' || window.location.pathname === '/setting.html') {
             window.location.href = '/sign-in.html';
         }
     }

@@ -296,3 +296,30 @@ footer {
     from {bottom: 30px; opacity: 1;}
     to {bottom: 0; opacity: 0;}
 }
+
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #33313D; /* Match background color to site palette */
+    z-index: 1000;
+}
+
+#loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 8px solid #4c495C; /* Slightly darker gray to match the theme */
+    border-top: 8px solid #A8BFA6; /* Match accent color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
