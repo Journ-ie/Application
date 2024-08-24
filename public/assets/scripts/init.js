@@ -21,7 +21,7 @@ const db = getFirestore(app);
 onAuthStateChanged(auth, (user) => {
     if (user) {
         // User is signed in, you can access user information here
-        console.log('User is signed in:', user);
+        console.log('User is signed in');
 
         // Optionally, redirect to a protected page
         if (window.location.pathname === '/sign-in.html') {
