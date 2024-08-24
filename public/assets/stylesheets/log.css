@@ -10,11 +10,11 @@
 }
 
 .profile-picture {
-    opacity: 1;
+    display: block;
 }
 
 .profile-menu {
-    opacity: 1;
+    display: block;
 }
 
 .form {

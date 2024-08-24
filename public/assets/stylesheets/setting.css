@@ -193,7 +193,7 @@ button:hover {
 }
 
 .profile-menu {
-    opacity: 1;
+    display: block;
 }
 
 #return-save {
@@ -215,7 +215,7 @@ button:hover {
 }
 
 .profile-picture {
-    opacity: 1;
+    display: block;
 }
 
 .user-name {

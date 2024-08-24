@@ -1,7 +1,7 @@
 // import functions from SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 // firebase config
 const firebaseConfig = {
@@ -15,6 +15,27 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);  
+const db = getFirestore(app);
+
+// Set an authentication state observer
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // User is signed in, you can access user information here
+        console.log('User is signed in:', user);
+
+        // Optionally, redirect to a protected page
+        if (window.location.pathname === '/sign-in.html') {
+            window.location.href = '/journal.html'; // Redirect to journal if already signed in
+        }
+    } else {
+        // No user is signed in
+        console.log('No user is signed in');
+
+        // Optionally, redirect to login page
+        if (window.location.pathname !== '/sign-in.html') {
+            window.location.href = '/sign-in.html';
+        }
+    }
+});
 
 export { auth, db };

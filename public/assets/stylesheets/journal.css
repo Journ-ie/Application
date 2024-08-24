@@ -6,7 +6,7 @@
 }
 
 .profile-picture {
-    opacity: 1;
+    display: block;
 }
 
 .user-name {
@@ -117,7 +117,7 @@
 }
 
 .profile-menu {
-    opacity: 1;
+    display: block;
 }
 
 .form {
