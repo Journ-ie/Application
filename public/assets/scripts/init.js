@@ -32,7 +32,7 @@ onAuthStateChanged(auth, (user) => {
         console.log('No user is signed in');
 
         // Optionally, redirect to login page
-        if (window.location.pathname !== '/sign-in.html') {
+        if (window.location.pathname !== '/sign-in.html' && window.location.pathname !== '/') {
             window.location.href = '/sign-in.html';
         }
     }
