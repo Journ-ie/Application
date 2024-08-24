@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Firestore Test</title>
+
+    <script type="module" defer src="assets/scripts/init.js"></script>
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/web-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/log.css">
+    
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-performance-compat.js"></script>
+</head>
+<body>
+    <h1>Firestore Test</h1>
+    
+    <h3 id="demo">Click this text to upload.</h3>
+
+    <script type="module">
+        import { db } from './assets/scripts/init.js';
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+
+        document.getElementById('demo').addEventListener('click', myFunction);
+
+        async function myFunction() {
+            
+            console.log("TEST");
+
+            // Your Firestore logic goes here
+            try {
+                const docRef = await addDoc(collection(db, "users"), {
+                    first: "Ada",
+                    last: "Lovelace",
+                    born: 1815
+                });
+                console.log("Document written with ID: ", docRef.id);
+                } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        }
+    </script>
+</body>
+</html>

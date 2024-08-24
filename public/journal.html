@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Journ.ie Home Page</title>
+
+    <!--Scripts-->
+    <script src="assets/scripts/loadLanguage.js"></script>
+    <script src="assets/scripts/log-reel.js" defer></script>
+
+    <script type="module" defer src="assets/scripts/init.js"></script>
+    
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/web-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/journal.css">
+    
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
+</head>
+
+<body onload="loadLanguage('en')">
+    <header>
+        <div class="nav-bar">
+            <div class="nav-items-section">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/" data-key="nav-home">Home</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="nav-items">
+                <div class="search-bar">
+                    <div class="filter-container">
+                        <button class="filter-button">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="filter-dropdown">
+                            <div id="label-options">
+                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="activity-label">Activity</label>
+                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="reflection-label">Reflection</label>
+                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="goal-label">Goal</label>
+                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="diary-label">Diary</label>
+                                <label class="filter-option"><input type="checkbox" value="label-1" data-key="journey-label">Journey</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" class="search-input">
+                        <button class="search-button"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+                <span id="user-name" class="user-name" data-key="fullname">Username</span>
+                <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
+                
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
+
+                    <div class="dropdown-content">
+                        <div class="languages">
+                            <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                            <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                            <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                        </div>
+
+                        <div class="profile-menu">
+                            <a href="setting.html" data-key="settings">Settings</a>
+                            <a href="sign-in.html" data-key="log-out">Log Out</a>
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="journal" class="hero">
+        <div class="journal-items">
+            <div class="post-bar form">
+                <form>
+                    <div class="divide">
+                        <a href="log.html" class="log-btn"><div id="add-post">
+                            <i class="fa-solid fa-plus"></i>                    
+                        </div></a>
+                        <div id="mood-tracker">
+                            <h2 data-key="mood-message">How are you feeling today?</h2>
+                            <div class="emotions">
+                                <button id="happy"><i class="fa-solid fa-face-laugh-beam"></i></button>
+                                <button id="okay"><i class="fa-solid fa-face-smile"></i></button>
+                                <button id="meh"><i class="fa-solid fa-face-meh"></i></button>
+                                <button id="sad"><i class="fa-solid fa-face-sad-tear"></i></button>
+                                <button id="angry"><i class="fa-solid fa-face-angry"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="post-reel">
+                <form>
+                    <div class="divide">
+                        <!--Posts will dynamically be added here.-->
+                    </div>
+                </form>
+            </div>            
+        </div>  
+    </section>
+
+    <footer>
+        <div class="footer-items">
+            <div class="footer-links">
+                <div class="column">
+                    <h3 data-key="nav-home">Home</h3>
+                    <ul>
+                        <li><a href="/#features" data-key="features">Features</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="journal">Journal</h3>
+                    <ul>
+                        <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
+                        <li><a href="setting.html" data-key="profile">Profile</a></li>
+                        <li><a href="setting.html" data-key="account">Account</a></li>
+                        <li><a href="sign-in.html" data-key="login-register">Login/Register</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="user-guide">User Guide</h3>
+                    <ul>
+                        <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
+                        <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
+                        <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
+                        <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="help">Help</h3>
+                    <ul>
+                        <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
+                        <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
+                <p data-key="signature">© Zedev 2024</p>
+            </div>
+        </div>
+    
+        
+    </footer>
+
+</body>
+</html>

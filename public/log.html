@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Journ.ie Home Page</title>
+
+    <!--Scripts-->
+    <script src="assets/scripts/loadLanguage.js"></script>
+    <script src="assets/scripts/uploadMedia.js"></script>
+    <script type="module" defer src="assets/scripts/init.js"></script>
+
+    <script src="assets/scripts/testupload.js" type="module" defer></script>
+
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/web-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
+    <link rel="stylesheet" href="assets/stylesheets/log.css">
+    
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-database-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-functions-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-messaging-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-performance-compat.js"></script>
+</head>
+
+<body onload="loadLanguage('en')">
+    <header>
+        <div class="nav-bar">
+            <div class="nav-items-section">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="/" data-key="nav-home">Home</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="nav-items">
+                <span id="user-name" class="user-name" data-key="fullname">Username</span>
+                <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
+                
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
+
+                    <div class="dropdown-content">
+                        <div class="languages">
+                            <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                            <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                            <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                        </div>
+
+                        <div class="profile-menu">
+                            <a href="setting.html" data-key="settings">Settings</a>
+                            <a href="sign-in.html" data-key="log-out">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="log" class="hero">
+        <div class="log-items">
+            <div id="return-submit">
+                <div class="return">
+                    <a href="journal.html" class="return-btn"><i class="fa-solid fa-arrow-left"></i>
+                    <h4 data-key="return-journal">Return to Journal</h4></a>
+                </div>
+                <div class="submit">
+                    <button type="submit" class="submit" data-key="submit">Submit</button>
+                </div>
+            </div>
+            <div class="log-form form">
+                <form>
+                    <div class="title-labels">
+                        <input type="text" class="log-title" name="log-title" placeholder="How are you today?" data-key="log-message">
+                        <div id="label-options">
+                            <label class="filter-option activity"><input type="checkbox" value="label-1" data-key="activity-label">Activity</label>
+                            <label class="filter-option reflection"><input type="checkbox" value="label-1" data-key="reflection-label">Reflection</label>
+                            <label class="filter-option goal"><input type="checkbox" value="label-1" data-key="goal-label">Goal</label>
+                            <label class="filter-option diary"><input type="checkbox" value="label-1" data-key="diary-label">Diary</label>
+                            <label class="filter-option journey"><input type="checkbox" value="label-1" data-key="journey-label">Journey</label>
+                        </div>
+                    </div>                    
+                    <div class="caption-content">
+                        <textarea id="messageBox" class="message" name="message" rows="20" cols="50"></textarea>    
+                    </div>
+                    <div class="medias">
+                        <div id="add-media"><i class="fa-solid fa-camera"></i></div>
+                        <div class="post-upload">
+                            <input type="file" id="media-upload" class="media-upload" accept="image/*,video/*" multiple>
+                            <div class="media-preview" id="media-preview">
+                                <!--Medias Uploaded to be added here***-->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>       
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-items">
+            <div class="footer-links">
+                <div class="column">
+                    <h3 data-key="nav-home">Home</h3>
+                    <ul>
+                        <li><a href="/#features" data-key="features">Features</a></li>
+                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="journal">Journal</h3>
+                    <ul>
+                        <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
+                        <li><a href="setting.html" data-key="profile">Profile</a></li>
+                        <li><a href="setting.html" data-key="account">Account</a></li>
+                        <li><a href="sign-in.html" data-key="login-register">Login/Register</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="user-guide">User Guide</h3>
+                    <ul>
+                        <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
+                        <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
+                        <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
+                        <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 data-key="help">Help</h3>
+                    <ul>
+                        <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
+                        <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
+                <p data-key="signature">© Zedev 2024</p>
+            </div>
+        </div>
+    
+        
+    </footer>
+
+</body>
+</html>
