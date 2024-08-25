@@ -17,15 +17,12 @@ document.addEventListener('readystatechange', () => {
                 usernameText.style.display = 'block';
             }
             
-
-            // user is signed in, show profile picture
             if (profilePicture) { 
                 if (userDoc.data().profilePictureUrl) profilePicture.src = userDoc.data().profilePictureUrl;
 
                 profilePicture.style.display = 'block';
             }
 
-            // show the profile menu
             if (profileMenu) profileMenu.style.display = 'block';
 
         } else {
