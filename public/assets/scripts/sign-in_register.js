@@ -21,6 +21,7 @@ document.querySelector('#register-form form').addEventListener('submit', async (
 
     if (password !== reEnterPassword) {
         showToast('Passwords do not match!', 'error');
+        return;
     }
 
     try {

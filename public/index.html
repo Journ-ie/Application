@@ -8,7 +8,8 @@
     <!--Scripts-->
     <script src="assets/scripts/loadLanguage.js"></script>
 
-    <script type="module" src="assets/scripts/authentication.js"></script>
+    <script type="module" defer src="assets/scripts/updateui.js"></script>
+    <script type="module" src="assets/scripts/logout.js"></script>
     <script type="module" defer src="assets/scripts/init.js"></script>
 
     <!--Stylesheets-->
@@ -48,7 +49,7 @@
                             <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
                         </ul>
                     </nav>
-                    <a href="sign-in.html" class="login-button-link" data-key="sign-in">Sign In</a>
+                    <a href="sign-in.html" id='sign-in-button' class="login-button-link" data-key="sign-in">Sign In</a>
                 </div>
                 <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
                     <div class="dropdown">
@@ -132,7 +133,7 @@
                         <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
                         <li><a href="setting.html" data-key="profile">Profile</a></li>
                         <li><a href="setting.html" data-key="account">Account</a></li>
-                        <li><a href="sign-in.html" data-key="login-register">Login/Register</a></li>
+                        
                     </ul>
                 </div>
                 <div class="column">

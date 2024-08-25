@@ -1,7 +1,7 @@
 // import functions from SDKs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 // firebase config
 const firebaseConfig = {
@@ -17,26 +17,36 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Set an authentication state observer
 onAuthStateChanged(auth, (user) => {
+    const loadingElement = document.getElementById('loading');
+    const mainContentElement = document.getElementById('main-content');
+
     if (user) {
-        // User is signed in, you can access user information here
         console.log('User is signed in');
 
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('main-content').style.display = 'block';
-
-        // Optionally, redirect to a protected page
+        // Breaks registration if uncommented, TODO 
+        /*
         if (window.location.pathname === '/sign-in.html') {
-            window.location.href = '/journal.html'; // Redirect to journal if already signed in
+            window.location.href = '/journal.html';
+        } */
+
+        // Show main content if not signing out
+        if (loadingElement && mainContentElement) {
+            loadingElement.style.display = 'none';
+            mainContentElement.style.display = 'block';
         }
+    
     } else {
-        // No user is signed in
         console.log('No user is signed in');
-        console.log(window.location.pathname);
-        // Optionally, redirect to login page
+
+        // Redirect to sign-in if trying to access restricted pages
         if (window.location.pathname === '/journal.html' || window.location.pathname === '/log.html' || window.location.pathname === '/setting.html') {
             window.location.href = '/sign-in.html';
+        } else {
+            if (loadingElement && mainContentElement) {
+                loadingElement.style.display = 'none';
+                mainContentElement.style.display = 'block';
+            }
         }
     }
 });

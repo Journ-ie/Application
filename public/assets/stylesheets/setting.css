@@ -219,6 +219,7 @@ button:hover {
 }
 
 .user-name {
+    display: none;
     padding: 0 10px;
 }
 

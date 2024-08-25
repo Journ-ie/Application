@@ -50,7 +50,7 @@ document.querySelector('#log-submit').addEventListener('click', async (event) =>
         
         setTimeout(() => {
             window.location.href = 'journal.html';
-        }, 2000);
+        }, 1000);
 
         document.querySelector('form').reset();
     } catch (error) {
