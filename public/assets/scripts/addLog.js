@@ -18,7 +18,7 @@ document.querySelector('#log-submit').addEventListener('click', async (event) =>
 
     const logTitle = document.querySelector('.log-title').value.trim();
     const message = document.querySelector('.message').value.trim();
-    const selectedLabels = Array.from(document.querySelectorAll('#label-options input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+    const selectedLabels = Array.from(document.querySelectorAll('#label-options input[type="checkbox"]:checked')).map(checkbox => `#${checkbox.value}`);
 
     if (!logTitle || !message) {
         showToast('Title and message cannot be empty.', 'error');
