@@ -379,3 +379,15 @@ button:hover {
 #confirm-deactivation-button.delete-account:hover {
     background-color: #882828;
 }
+
+.account-setting input[type="email"] {
+    background-color: #7d7a8b;
+    color: #ffffff;
+    border: none;
+    font-style: italic;
+}
+
+.account-setting input[type="email"]:focus {
+    border: none; 
+    box-shadow: none; 
+}
