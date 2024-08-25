@@ -93,5 +93,8 @@
     "mood-message": "How are you feeling today?",
     "log-title": "Title...",
     "upload": "Upload",
-    "log-message": "How are you today?"
+    "log-message": "How are you today?",
+    "confirm-password": "Please enter your password to confirm changes",
+    "old-password": "Old Password",
+    "new-password": "New Password"
 }

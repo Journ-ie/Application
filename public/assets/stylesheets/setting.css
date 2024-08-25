@@ -221,3 +221,98 @@ button:hover {
 .user-name {
     padding: 0 10px;
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #38353F;
+    margin: 15% auto;
+    padding: 12px 30px 30px 30px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin: 30px 0;
+    font-size: 16px;
+}
+
+#password-confirmation-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#password-confirmation-form input[type="password"], #current-password, #new-password, #confirm-password {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #38353F;
+    border-radius: 5px;
+    background-color: #4a4752;
+    color: #fff;
+}
+
+#password-confirmation-form input[type="password"]:focus {
+    border: none; 
+    box-shadow: none; 
+}
+
+.confirm-password-button {
+    background-color: #A0B49E; 
+    color: #fff;
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    font-size: 16px;
+    cursor: pointer; 
+    margin-top: 25px;
+}
+
+.confirm-password-button:hover {
+    background-color: #8a9e89; 
+}
+
+#password-change-form input[type="password"] {
+    background-color: #4a4752;
+}
+
+#current-password, #new-password, #confirm-password {
+    margin: 10px 0;
+}
+
+#passwordChangeModal .modal-content {
+    padding: 12px 30px 30px 30px;
+}
+
+#passwordChangeModal h2 {
+    padding: 0;
+    font-size: x-large;
+}
+
+#password-change-form {
+    margin: 20px 0;
+}
+
+#change-password-confirmation {
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px 0;
+}
+
+#password-change-form label {
+    float: left;
+}
+

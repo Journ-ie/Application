@@ -7,7 +7,8 @@
 
     <!--Scripts-->
     <script src="assets/scripts/loadLanguage.js"></script>
-
+    <script type="module" src="assets/scripts/setting-save-changes.js"></script>
+    <script type="module" src="assets/scripts/setting-change-password.js"></script>
     <script type="module" src="assets/scripts/authentication.js"></script>
     <script type="module" defer src="assets/scripts/init.js"></script>
 
@@ -16,6 +17,8 @@
     <link rel="stylesheet" href="assets/stylesheets/web-main.css">
     <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
     <link rel="stylesheet" href="assets/stylesheets/setting.css">
+
+    
     
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
@@ -77,7 +80,7 @@
                     <h4 data-key="return-journal">Return to Journal</h4></a>
                 </div>
                 <div class="save">
-                    <button type="submit" class="save-changes" data-key="save-changes">Save Changes</button>
+                    <button id="save-info" type="submit" class="save-changes" data-key="save-changes">Save Changes</button>
                 </div>
             </div>
             <div id="setting-form" class="form">
@@ -130,6 +133,34 @@
                 </form>
             </div>
         </div>        
+
+        <div id="passwordModal" class="modal">
+            <div class="modal-content">
+                <h2 data-key="confirm-password">Please enter your password to confirm changes</h2>
+                <form id="password-confirmation-form">
+                    <input type="password" id="password" name="password">
+                    <button type="submit" class="confirm-password-button" data-key="save-changes">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="passwordChangeModal" class="modal">
+            <div class="modal-content">
+                <h2>Change Password</h2>
+                <form id="password-change-form">
+                    <label for="current-password" data-key="old-password">Old Password</label>
+                    <input type="password" id="current-password" name="current-password">
+                    
+                    <label for="new-password" data-key="new-password">New Password</label>
+                    <input type="password" id="new-password" name="new-password">
+                    
+                    <label for="confirm-password" data-key="re-enter-password">Re-Enter Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password">
+                    
+                    <button type="submit" id="change-password-confirmation" class="change-password" data-key="change-password">Change Password</button>
+                </form>                                    
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -175,10 +206,10 @@
                 <p data-key="signature">© Zedev 2024</p>
             </div>
         </div>
-    
-        
     </footer>
 
+    <div id="toast" class="toast">
+        <p id="toastMessage"></p>
+    </div>   
 </body>
-</div>
 </html>
