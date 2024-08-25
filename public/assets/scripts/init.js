@@ -24,6 +24,11 @@ onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log('User is signed in');
 
+        if (window.location.pathname === '/sign-in.html') {
+            window.location.href = '/journal.html';
+            return;
+        }
+
         // Show main content if not signing out
         if (loadingElement && mainContentElement) {
             loadingElement.style.display = 'none';
