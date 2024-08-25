@@ -1,13 +1,13 @@
 import { auth, db } from './init.js';
-import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+import { collection, getDocs, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
-// create posts dynamically
-function createPostElement(postData) {
-    const postsContainer = document.querySelector('.post-reel .divide'); 
+function createPostElement(postData, postId) {
+    const postsContainer = document.querySelector('.post-reel .divide');
 
     const postItem = document.createElement('div');
-    postItem.classList.add('post-items'); 
+    postItem.classList.add('post-items');
+    postItem.dataset.postId = postId; // Store the post ID in the element
 
     const postTopbar = document.createElement('div');
     postTopbar.classList.add('post-topbar');
@@ -16,11 +16,11 @@ function createPostElement(postData) {
     postTitle.classList.add('post-title');
 
     const postTitleText = document.createElement('h2');
-    postTitleText.textContent = postData.title || 'Untitled'; 
+    postTitleText.textContent = postData.title || 'Untitled';
 
     const postDate = document.createElement('span');
     postDate.classList.add('post-date');
-    postDate.textContent = postData.createdAt.toDate().toLocaleDateString(); 
+    postDate.textContent = postData.createdAt.toDate().toLocaleDateString();
 
     postTitle.appendChild(postTitleText);
     postTitle.appendChild(postDate);
@@ -38,10 +38,30 @@ function createPostElement(postData) {
     const editButton = document.createElement('button');
     editButton.classList.add('edit');
     editButton.textContent = 'Edit';
+    editButton.type = 'button';
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete');
     deleteButton.textContent = 'Delete';
+    deleteButton.type = 'button';
+
+    deleteButton.addEventListener('click', async () => {
+        event.preventDefault();
+        const confirmDelete = confirm("Are you sure you want to delete this post?");
+        if (confirmDelete) {
+            try {
+                const postDocRef = doc(db, 'users', auth.currentUser.uid, 'logs', postId);
+                await deleteDoc(postDocRef);
+            
+                postItem.remove();
+
+                showToast("Post deleted successfully.");
+            } catch (error) {
+                console.error("Error deleting post:", error);
+                showToast("Failed to delete post.", "error");
+            }
+        }
+    });
 
     dropdownContent.appendChild(editButton);
     dropdownContent.appendChild(deleteButton);
@@ -61,19 +81,18 @@ function createPostElement(postData) {
 
     const mediaUrls = Array.isArray(postData.media) ? postData.media : [postData.media];
 
-    // CSS defers based on number of medias
     if (mediaUrls.length === 1) {
-        postMedia.classList.add('one-image'); 
+        postMedia.classList.add('one-image');
     } else if (mediaUrls.length === 2) {
-        postMedia.classList.add('two-images'); 
+        postMedia.classList.add('two-images');
     } else if (mediaUrls.length >= 3) {
         postMedia.classList.add('three-or-more-images');
     }
 
     mediaUrls.slice(0, 2).forEach((url) => {
         const mediaImg = document.createElement('img');
-        mediaImg.src = url; 
-        postMedia.appendChild(mediaImg); 
+        mediaImg.src = url;
+        postMedia.appendChild(mediaImg);
     });
 
     if (mediaUrls.length > 3) {
@@ -92,14 +111,13 @@ function createPostElement(postData) {
 
     const postLabels = document.createElement('div');
     postLabels.classList.add('post-labels');
-    postLabels.textContent = postData.labels.join(' '); 
+    postLabels.textContent = postData.labels.join(' ');
 
     postItem.appendChild(postTopbar);
     postItem.appendChild(postCaption);
     postItem.appendChild(postMedia);
     postItem.appendChild(postLabels);
 
-    // adding the post items to the posts container
     postsContainer.appendChild(postItem);
 }
 
@@ -120,7 +138,7 @@ async function fetchPosts(user) {
 
     postDocs.forEach(doc => {
         const postData = doc.data();
-        createPostElement(postData);
+        createPostElement(postData, doc.id);
     });
 
     noLogsMessage.style.display = 'none';
@@ -135,3 +153,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function showToast(message, type = 'success') {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+
+    toastMessage.textContent = message;
+
+    toast.classList.remove('toast-success', 'toast-error');
+
+    if (type === 'error') {
+        toast.classList.add('toast-error');
+    } else {
+        toast.classList.add('toast-success');
+    }
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3000);
+}
