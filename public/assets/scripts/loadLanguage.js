@@ -1,4 +1,6 @@
 function loadLanguage(lang) {
+    localStorage.setItem('selectedLanguage', lang);
+
     fetch(`assets/locales/${lang}.json`)
     .then(response => response.json())
     .then(data => {
@@ -14,3 +16,8 @@ function loadLanguage(lang) {
     })
     .catch(error => console.error('Error loading the language file:', error));
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLanguage = localStorage.getItem('selectedLanguage') || 'en'; 
+    loadLanguage(savedLanguage);
+});

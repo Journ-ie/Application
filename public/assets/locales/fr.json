@@ -84,7 +84,6 @@
     "delete-account": "Supprimer le Compte",
     "return-journal": "Retour au Journal",
     "save-changes": "Enregistrer les Modifications",
-    "fullname": "Nom de l'utilisateur",
     "activity-label": "Activité",
     "reflection-label": "Réflexion",
     "goal-label": "Objectif",
@@ -96,5 +95,9 @@
     "log-message": "Comment vous sentez-vous aujourd'hui?",
     "confirm-password": "Veuillez entrer votre mot de passe pour confirmer les modifications",
     "old-password": "Ancien Mot de passe",
-    "new-password": "Nouveau Mot de passe"
+    "new-password": "Nouveau Mot de passe",
+    "message-deactivation": "Êtes-vous sûr de vouloir désactiver votre compte ? Toutes vos données et votre compte seront supprimés. Veuillez entrer votre mot de passe pour désactiver votre compte.",
+    "no-logs": "Vous n'avez aucun journal à afficher.",
+    "edit": "Modifier",
+    "delete": "Supprimer"
 }

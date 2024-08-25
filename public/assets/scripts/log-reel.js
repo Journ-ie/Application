@@ -38,6 +38,7 @@ function createPostElement(postData, postId) {
     const editButton = document.createElement('button');
     editButton.classList.add('edit');
     editButton.textContent = 'Edit';
+    editButton.setAttribute('data-key', 'edit'); 
     editButton.type = 'button';
 
     editButton.addEventListener('click', () => {
@@ -48,6 +49,7 @@ function createPostElement(postData, postId) {
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete');
     deleteButton.textContent = 'Delete';
+    deleteButton.setAttribute('data-key', 'delete'); 
     deleteButton.type = 'button';
 
     deleteButton.addEventListener('click', async () => {
@@ -72,6 +74,17 @@ function createPostElement(postData, postId) {
 
     dropdownContent.appendChild(editButton);
     dropdownContent.appendChild(deleteButton);
+
+    document.body.appendChild(dropdownContent);
+
+    const currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
+    fetch(`assets/locales/${currentLanguage}.json`)
+        .then(response => response.json())
+        .then(data => {
+            editButton.textContent = data['edit'];
+            deleteButton.textContent = data['delete'];
+        });
+    
 
     dropdown.appendChild(dropdownToggle);
     dropdown.appendChild(dropdownContent);
