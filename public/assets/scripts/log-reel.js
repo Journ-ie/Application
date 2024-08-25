@@ -105,11 +105,16 @@ function createPostElement(postData) {
 
 // fetching posts from db
 async function fetchPosts(user) {
+    const postsContainer = document.querySelector('.post-reel .divide');
+    const noLogsMessage = document.getElementById('no-logs-message');
+
     const postsCollection = collection(db, 'users', user.uid, 'logs');
     const postDocs = await getDocs(postsCollection);
 
     if (postDocs.empty) {
         console.log('No logs found for this user.');
+
+        noLogsMessage.style.display = 'block';
         return;
     }
 
@@ -117,6 +122,8 @@ async function fetchPosts(user) {
         const postData = doc.data();
         createPostElement(postData);
     });
+
+    noLogsMessage.style.display = 'none';
 }
 
 document.addEventListener('DOMContentLoaded', function() {

@@ -402,6 +402,7 @@
     margin: 0;
 }
 
-
-
+#no-logs {
+    min-height: 88vh;
+}
 
