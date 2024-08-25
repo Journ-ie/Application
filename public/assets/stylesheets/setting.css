@@ -75,10 +75,14 @@
     width: 135px;
     height: 135px;
     border-radius: 50%;
-    background-image: url('../imgs/profile-picture-placeholder.jpg'); 
-    background-size: cover;
-    background-position: center;
     border: 2px solid #4C495C;
+    overflow: hidden;
+}
+
+.profile-picture-setting img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
 }
 
 button {

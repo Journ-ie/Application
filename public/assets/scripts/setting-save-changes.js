@@ -1,6 +1,9 @@
 import { auth, db } from './init.js';
 import { doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
 import { onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js';
+
+const storage = getStorage();
 
 document.addEventListener('DOMContentLoaded', function() {
     const passwordModal = document.getElementById('passwordModal');
@@ -8,11 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveInfoButton = document.getElementById('save-info');
     const closeModal = document.querySelector('.close');
 
+    const profilePictureUpload = document.getElementById('profile-picture-upload');
+    const profilePicturePreview = document.getElementById('profile-picture-preview');
+    let profilePictureFile; 
+    let userData = {};
+
     // open the confirm changes modal
     saveInfoButton.addEventListener('click', (event) => {
         event.preventDefault();
         passwordModal.style.display = 'block';
     });
+
     window.addEventListener('click', function(event) {
         if (event.target === passwordModal) {
             passwordModal.style.display = 'none';
@@ -26,15 +35,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // takes all data from db and adds as placeholder on user info
             if (userDoc.exists()) {
-                const userData = userDoc.data();
+                userData = userDoc.data();
                 document.getElementById('first-name').value = userData.firstName || '';
                 document.getElementById('last-name').value = userData.lastName || '';
                 document.getElementById('dob').value = userData.dob || '';
                 document.querySelector('.username').value = userData.username || '';
                 document.getElementById('email').value = user.email || '';
+
+                // set the users profile picture if exists
+                if (userData.profilePictureUrl) {
+                    profilePicturePreview.src = userData.profilePictureUrl;
+                }
+
             } else {
                 console.error('No user data found!');
             }
+
+            // handle a profile picture file being selected
+            profilePictureUpload.addEventListener('change', (event) => {
+                profilePictureFile = event.target.files[0];
+
+                if (profilePictureFile) {
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        profilePicturePreview.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(profilePictureFile);
+                }
+            });
 
             // confirmation form submission
             passwordForm.addEventListener('submit', async (event) => {
@@ -62,12 +92,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         return;
                     }
 
+                    let profilePictureUrl = userData.profilePictureUrl;
+
+                    // upload the new profile picture if one is selected
+                    if (profilePictureFile) {
+                        const storageRef = ref(storage, `users/${user.uid}/profile.jpg`);
+
+                        await uploadBytes(storageRef, profilePictureFile);
+
+                        profilePictureUrl = await getDownloadURL(storageRef);
+                    }
+
                     await updateDoc(userDocRef, {
                         firstName: updatedFirstName,
                         lastName: updatedLastName,
                         dob: updatedDob,
                         username: updatedUsername,
-                        email: updatedEmail
+                        email: updatedEmail,
+                        profilePictureUrl: profilePictureUrl
                     });
 
                     if (user.email !== updatedEmail) {

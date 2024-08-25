@@ -29,7 +29,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-analytics-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-remote-config-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-performance-compat.js"></script>
 </head>
 <div id="loading">
     <div class="spinner"></div>
@@ -90,8 +89,11 @@
                         <h3 data-key="profile">Profile</h3>
                         <div class="items">
                             <div class="profile-container">
-                                <div class="profile-picture-setting"></div>
-                                <button class="change-photo-button" data-key="change-photo">Change Photo</button>
+                                <div class="profile-picture-setting">
+                                    <img id="profile-picture-preview" src="assets/imgs/profile-picture-placeholder.jpg" alt="Profile Picture">
+                                </div>
+                                <input type="file" id="profile-picture-upload" accept="image/*" style="display: none;">
+                                <button type="button" class="change-photo-button" onclick="document.getElementById('profile-picture-upload').click();">Change Photo</button>
                             </div>
                             <div class="profile-information">
                                 <div class="first-last-name">

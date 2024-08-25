@@ -19,7 +19,11 @@ document.addEventListener('readystatechange', () => {
             
 
             // User is signed in, show profile picture
-            if (profilePicture) profilePicture.style.display = 'block';
+            if (profilePicture) { 
+                if (userDoc.data().profilePictureUrl) profilePicture.src = userDoc.data().profilePictureUrl;
+
+                profilePicture.style.display = 'block';
+            }
 
             // Set picture to user picture here
 
