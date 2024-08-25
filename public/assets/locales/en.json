@@ -96,6 +96,8 @@
     "confirm-password": "Please enter your password to confirm changes",
     "old-password": "Old Password",
     "new-password": "New Password",
-    "message-deactivation": "Are you sure you would like to deactivate your account? All your data wand account will be deleted. Please enter your password to deactivate your account."
-
+    "message-deactivation": "Are you sure you would like to deactivate your account? All your data wand account will be deleted. Please enter your password to deactivate your account.",
+    "no-logs": "You have no logs to show.",
+    "edit": "Edit",
+    "delete": "Delete"
 }

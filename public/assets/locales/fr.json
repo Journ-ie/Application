@@ -96,7 +96,8 @@
     "confirm-password": "Veuillez entrer votre mot de passe pour confirmer les modifications",
     "old-password": "Ancien Mot de passe",
     "new-password": "Nouveau Mot de passe",
-    "message-deactivation": "Êtes-vous sûr de vouloir désactiver votre compte ? Toutes vos données et votre compte seront supprimés. Veuillez entrer votre mot de passe pour désactiver votre compte."
-
-
+    "message-deactivation": "Êtes-vous sûr de vouloir désactiver votre compte ? Toutes vos données et votre compte seront supprimés. Veuillez entrer votre mot de passe pour désactiver votre compte.",
+    "no-logs": "Vous n'avez aucun journal à afficher.",
+    "edit": "Modifier",
+    "delete": "Supprimer"
 }
