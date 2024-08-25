@@ -7,7 +7,7 @@ function createPostElement(postData, postId) {
 
     const postItem = document.createElement('div');
     postItem.classList.add('post-items');
-    postItem.dataset.postId = postId; // Store the post ID in the element
+    postItem.dataset.postId = postId; 
 
     const postTopbar = document.createElement('div');
     postTopbar.classList.add('post-topbar');
@@ -40,6 +40,11 @@ function createPostElement(postData, postId) {
     editButton.textContent = 'Edit';
     editButton.type = 'button';
 
+    editButton.addEventListener('click', () => {
+        const postId = postItem.dataset.postId; 
+        window.location.href = `log.html?postId=${postId}`;
+    });
+
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete');
     deleteButton.textContent = 'Delete';
@@ -47,7 +52,9 @@ function createPostElement(postData, postId) {
 
     deleteButton.addEventListener('click', async () => {
         event.preventDefault();
+
         const confirmDelete = confirm("Are you sure you want to delete this post?");
+
         if (confirmDelete) {
             try {
                 const postDocRef = doc(db, 'users', auth.currentUser.uid, 'logs', postId);
@@ -121,7 +128,6 @@ function createPostElement(postData, postId) {
     postsContainer.appendChild(postItem);
 }
 
-// fetching posts from db
 async function fetchPosts(user) {
     const postsContainer = document.querySelector('.post-reel .divide');
     const noLogsMessage = document.getElementById('no-logs-message');

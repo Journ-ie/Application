@@ -262,9 +262,6 @@ footer {
     font-size: 17px; 
     margin-left: 20px;
 }
-.journal .toast {
-    padding: 20px 20px;
-}
 
 .toast.show {
     visibility: visible; 
