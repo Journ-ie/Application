@@ -406,3 +406,7 @@
     min-height: 88vh;
 }
 
+.toast {
+    padding: 20px 20px;
+}
+
