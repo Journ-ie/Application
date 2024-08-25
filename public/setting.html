@@ -7,6 +7,7 @@
 
     <!--Scripts-->
     <script src="assets/scripts/loadLanguage.js"></script>
+    <script type="module" src="assets/scripts/setting-deactivation.js"></script>
     <script type="module" src="assets/scripts/setting-save-changes.js"></script>
     <script type="module" src="assets/scripts/setting-change-password.js"></script>
     <script type="module" src="assets/scripts/logout.js"></script>
@@ -127,7 +128,7 @@
                     <div class="deactivation section">
                         <h3 data-key="deactivation">Deactivation</h3>
                         <div class="items">
-                            <button type="submit" class="delete-account" data-key="delete-account">Delete Account</button>
+                            <button type="submit" id="deactivation-button" class="delete-account" data-key="delete-account">Delete Account</button>
                         </div>
                     </div>
                 </form>
@@ -146,7 +147,7 @@
 
         <div id="passwordChangeModal" class="modal">
             <div class="modal-content">
-                <h2>Change Password</h2>
+                <h2 data-key="change-password">Change Password</h2>
                 <form id="password-change-form">
                     <label for="current-password" data-key="old-password">Old Password</label>
                     <input type="password" id="current-password" name="current-password">
@@ -159,6 +160,16 @@
                     
                     <button type="submit" id="change-password-confirmation" class="change-password" data-key="change-password">Change Password</button>
                 </form>                                    
+            </div>
+        </div>
+
+        <div id="deactivationModal" class="modal">
+            <div class="modal-content">
+                <h2 data-key="message-deactivation">Are you sure you would like to deactivate your account? All your data wand account will be deleted. Please enter your password to deactivate your account.</h2>
+                <form id="deactivation-form">
+                    <input type="password" id="password-deactivate" name="password">
+                    <button type="submit" id="confirm-deactivation-button" class="delete-account" data-key="delete-account">Delete Account</button>
+                </form>
             </div>
         </div>
     </section>
