@@ -39,6 +39,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         console.log('No user is signed in');
 
+        // Redirect to sign-in if trying to access restricted pages
         if (window.location.pathname === '/journal.html' || window.location.pathname === '/log.html' || window.location.pathname === '/setting.html') {
             window.location.href = '/sign-in.html';
         } else {
