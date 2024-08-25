@@ -18,14 +18,14 @@ document.addEventListener('readystatechange', () => {
             }
             
 
-            // User is signed in, show profile picture
+            // user is signed in, show profile picture
             if (profilePicture) { 
                 if (userDoc.data().profilePictureUrl) profilePicture.src = userDoc.data().profilePictureUrl;
 
                 profilePicture.style.display = 'block';
             }
 
-            // Show the profile menu
+            // show the profile menu
             if (profileMenu) profileMenu.style.display = 'block';
 
         } else {
