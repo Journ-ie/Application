@@ -39,7 +39,12 @@ document.querySelector('#register-form form').addEventListener('submit', async (
             email: user.email
         });
 
-        window.location.href = 'journal.html';
+        showToast('Account created successfully!', 'success');
+
+        setTimeout(() => {
+            window.location.href = 'journal.html';
+        }, 1000);
+
     } catch (error) {
         console.error('Error details:', error);
         if (error.code === 'auth/email-already-in-use') {

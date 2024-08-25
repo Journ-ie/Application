@@ -25,13 +25,11 @@ document.addEventListener('readystatechange', () => {
                 profilePicture.style.display = 'block';
             }
 
-            // Set picture to user picture here
-
             // Show the profile menu
             if (profileMenu) profileMenu.style.display = 'block';
 
         } else {
-            // User is not signed in, show sign in
+
             if (signInButton) signInButton.style.display = 'inline-block';
         }
     });
