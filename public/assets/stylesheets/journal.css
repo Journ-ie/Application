@@ -356,6 +356,13 @@
     font-weight: bold; 
 }
 
+.post-media video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
 .post-labels {
     margin-top: 10px;
     border-radius: 50%;

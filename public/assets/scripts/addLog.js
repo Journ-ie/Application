@@ -73,38 +73,57 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     function renderPreview(existingMedia = [], newFiles = []) {
-        mediaPreviewContainer.innerHTML = ''; 
-
+        mediaPreviewContainer.innerHTML = ''; // Clear previous previews
+    
+        // Handle existing media URLs (from the post being edited)
         existingMedia.forEach((mediaUrl, index) => {
             const mediaElement = document.createElement('div');
             mediaElement.classList.add('media-item');
-            mediaElement.innerHTML = `
-                ${mediaUrl.endsWith('.mp4') || mediaUrl.endsWith('.webm') || mediaUrl.endsWith('.avi') ? 
-                    `<video src="${mediaUrl}" controls class="media-preview-img"></video>` : 
-                    `<img src="${mediaUrl}" alt="media" class="media-preview-img">`}
-                <button type="button" class="remove-media" data-index="${index}">Remove</button>
-            `;
+    
+            // Check if the URL contains known video extensions
+            if (mediaUrl.includes('.mp4') || mediaUrl.includes('.webm') || mediaUrl.includes('.avi')) {
+                mediaElement.innerHTML = `
+                    <video src="${mediaUrl}" controls class="media-preview-img"></video>
+                    <button type="button" class="remove-media" data-index="${index}">Remove</button>
+                `;
+            } else {
+                mediaElement.innerHTML = `
+                    <img src="${mediaUrl}" alt="media" class="media-preview-img">
+                    <button type="button" class="remove-media" data-index="${index}">Remove</button>
+                `;
+            }
+    
             mediaPreviewContainer.appendChild(mediaElement);
         });
-
+    
+        // Handle newly added files
         newFiles.forEach((file, index) => {
             const fileReader = new FileReader();
             fileReader.onload = function(e) {
                 const mediaElement = document.createElement('div');
                 mediaElement.classList.add('media-item');
-                mediaElement.innerHTML = `
-                    ${file.type.startsWith('image/') ? `<img src="${e.target.result}" alt="media" class="media-preview-img">` : ''}
-                    ${file.type.startsWith('video/') ? `<video src="${e.target.result}" controls class="media-preview-img"></video>` : ''}
-                    <button type="button" class="remove-media" data-index="${existingMedia.length + index}">Remove</button>
-                `;
+    
+                if (file.type.startsWith('image/')) {
+                    mediaElement.innerHTML = `
+                        <img src="${e.target.result}" alt="media" class="media-preview-img">
+                        <button type="button" class="remove-media" data-index="${existingMedia.length + index}">Remove</button>
+                    `;
+                } else if (file.type.startsWith('video/')) {
+                    mediaElement.innerHTML = `
+                        <video src="${e.target.result}" controls class="media-preview-img"></video>
+                        <button type="button" class="remove-media" data-index="${existingMedia.length + index}">Remove</button>
+                    `;
+                }
+    
                 mediaPreviewContainer.appendChild(mediaElement);
             };
-
+    
             if (file.type.startsWith('image/') || file.type.startsWith('video/')) {
                 fileReader.readAsDataURL(file);
             }
         });
     }
+    
 
     document.querySelector('#log-submit').addEventListener('click', async (event) => {
         event.preventDefault();
@@ -169,6 +188,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
+
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+    const videoElements = document.querySelectorAll('.media-preview video');
+    videoElements.forEach(video => {
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+            video.style.objectFit = 'contain';
+            video.style.width = '100%';
+            video.style.height = 'auto';
+            video.style.borderRadius = '0';
+        } else {
+            video.style.objectFit = 'cover';
+            video.style.width = '100%';
+            video.style.height = '100px'; // Return to the original size
+            video.style.borderRadius = '5px';
+        }
+    });
+}
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');

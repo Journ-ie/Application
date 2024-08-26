@@ -52,7 +52,7 @@ function createPostElement(postData, postId) {
     deleteButton.setAttribute('data-key', 'delete'); 
     deleteButton.type = 'button';
 
-    deleteButton.addEventListener('click', async () => {
+    deleteButton.addEventListener('click', async (event) => {
         event.preventDefault();
 
         const confirmDelete = confirm("Are you sure you want to delete this post?");
@@ -109,10 +109,26 @@ function createPostElement(postData, postId) {
         postMedia.classList.add('three-or-more-images');
     }
 
+    // Clear any existing content in postMedia to avoid duplicates
+    postMedia.innerHTML = '';
+
     mediaUrls.slice(0, 2).forEach((url) => {
-        const mediaImg = document.createElement('img');
-        mediaImg.src = url;
-        postMedia.appendChild(mediaImg);
+        let mediaElement;
+
+        // Check for video extensions in the entire URL
+        const lowercasedUrl = url.toLowerCase();
+        if (lowercasedUrl.includes('.mp4') || lowercasedUrl.includes('.webm') || lowercasedUrl.includes('.avi')) {
+            mediaElement = document.createElement('video');
+            mediaElement.src = url;
+            mediaElement.controls = true;
+        } else {
+            mediaElement = document.createElement('img');
+            mediaElement.src = url;
+            mediaElement.alt = "media";
+        }
+
+        mediaElement.classList.add('media-preview-img');
+        postMedia.appendChild(mediaElement);
     });
 
     if (mediaUrls.length > 3) {
@@ -172,6 +188,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('fullscreenchange', handleFullscreenChange);
+document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+function handleFullscreenChange() {
+    const videoElements = document.querySelectorAll('.post-media video');
+    videoElements.forEach(video => {
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+            // Video is in fullscreen mode
+            video.style.objectFit = 'contain';
+        } else {
+            // Video is not in fullscreen mode
+            video.style.objectFit = 'cover';
+        }
+    });
+}
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
