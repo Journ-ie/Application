@@ -73,14 +73,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     function renderPreview(existingMedia = [], newFiles = []) {
-        mediaPreviewContainer.innerHTML = ''; // Clear previous previews
+        mediaPreviewContainer.innerHTML = ''; 
     
-        // Handle existing media URLs (from the post being edited)
+        // handle existing media URLs (from the post being edited)
         existingMedia.forEach((mediaUrl, index) => {
             const mediaElement = document.createElement('div');
             mediaElement.classList.add('media-item');
     
-            // Check if the URL contains known video extensions
             if (mediaUrl.includes('.mp4') || mediaUrl.includes('.webm') || mediaUrl.includes('.avi')) {
                 mediaElement.innerHTML = `
                     <video src="${mediaUrl}" controls class="media-preview-img"></video>
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             mediaPreviewContainer.appendChild(mediaElement);
         });
     
-        // Handle newly added files
+        // handle newly added files
         newFiles.forEach((file, index) => {
             const fileReader = new FileReader();
             fileReader.onload = function(e) {
