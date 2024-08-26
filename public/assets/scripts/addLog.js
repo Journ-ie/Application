@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const user = auth.currentUser;
         if (!user) {
             console.error('User is not authenticated');
-            showToast('You need to be logged in to submit a log.', 'error');
+            showToast(translations['toast-login-to-submit'], 'error');
             window.location.href = 'login.html';
             return;
         }
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const selectedLabels = Array.from(document.querySelectorAll('#label-options input[type="checkbox"]:checked')).map(checkbox => `#${checkbox.value}`);
 
         if (!logTitle || !message) {
-            showToast('Title and message cannot be empty.', 'error');
+            showToast(translations['log-empty-values'], 'error');
             return;
         }
 
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 createdAt: Timestamp.now()
             }, { merge: true });
 
-            showToast('Log submitted successfully!', 'success');
+            showToast(translations['toast-submit-log-success'], 'success');
 
             setTimeout(() => {
                 window.location.href = 'journal.html';
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             mediaPreviewContainer.innerHTML = ''; 
         } catch (error) {
             console.error('Error adding log:', error);
-            showToast('Error submitting log. Please try again.', 'error');
+            showToast(translations['toast-submit-log-error'], 'error');
         }
     });
 });
@@ -205,7 +205,7 @@ function handleFullscreenChange() {
         } else {
             video.style.objectFit = 'cover';
             video.style.width = '100%';
-            video.style.height = '100px'; // Return to the original size
+            video.style.height = '100px'; 
             video.style.borderRadius = '5px';
         }
     });

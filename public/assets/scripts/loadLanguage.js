@@ -1,9 +1,13 @@
+let translations = {};
+
 function loadLanguage(lang) {
     localStorage.setItem('selectedLanguage', lang);
 
     fetch(`assets/locales/${lang}.json`)
     .then(response => response.json())
     .then(data => {
+        translations = data; 
+
         document.querySelectorAll("[data-key]").forEach(elem => {
             const key = elem.getAttribute('data-key');
 
@@ -13,6 +17,8 @@ function loadLanguage(lang) {
                 elem.textContent = data[key]; 
             }
         });
+
+        document.dispatchEvent(new Event('languageLoaded'));    
     })
     .catch(error => console.error('Error loading the language file:', error));
 }

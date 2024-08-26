@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
                 if (!currentPassword || !newPassword || !confirmPassword) {
-                    showToast('Please enter all required fields.', 'error');
+                    showToast(translations['toast-required-fields-error'], 'error');
                     return;
                 }
 
                 if (newPassword !== confirmPassword) {
-                    showToast('New passwords do not match.', 'error');
+                    showToast(translations['toast-passwords-mismatch-error'], 'error');
                     return;
                 }
 
@@ -58,14 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     await reauthenticateWithCredential(user, credential); // authenticates user
                     await updatePassword(user, newPassword);
 
-                    showToast('Password updated successfully!', 'success');
+                    showToast(translations['toast-password-update-success'], 'success');
                     passwordChangeModal.style.display = 'none';
                 } catch (error) {
                     if (error.code === 'auth/invalid-credential') {
-                        showToast('Incorrect current password. Please try again.', 'error');
+                        showToast(translations['toast-incorrect-current-password-error'], 'error');
 
                     } else {
-                        showToast('Error updating password. Please try again later.', 'error');
+                        showToast(translations['toast-password-update-failure-error'], 'error');
                 
                     }
                 }

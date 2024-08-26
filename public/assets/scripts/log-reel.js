@@ -73,10 +73,10 @@ function createPostElement(postData, postId) {
             
                 postItem.remove();
 
-                showToast("Post deleted successfully.");
+                showToast(translations['toast-delete-post-success'], 'success');
             } catch (error) {
                 console.error("Error deleting post:", error);
-                showToast("Failed to delete post.", "error");
+                showToast(translations['toast-delete-post-error'], 'error');
             }
         }
     });

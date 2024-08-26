@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const password = document.getElementById('password-deactivate').value.trim();
                 if (!password) {
-                    showToast('Please enter your password.', 'error');
+                    showToast(translations['toast-enter-password-error'], 'error');
                     return;
                 }
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 try {
                     await reauthenticateWithCredential(user, credential);
 
-                    showToast('Account has been deleted.', 'error');
+                    showToast(translations['toast-account-deleted'], 'error');
 
                     const userDocRef = doc(db, 'users', user.uid);
                     await deleteDoc(userDocRef);
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 } catch (error) {
                     console.error('Error deactivating account:', error);
-                    showToast('Incorrect password or error occurred. Please try again.', 'error');
+                    showToast(translations['toast-incorrect-password-or-error'], 'error');
                 }
             });
         } else {

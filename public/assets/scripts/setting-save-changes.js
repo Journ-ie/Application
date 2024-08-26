@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const password = document.getElementById('password').value.trim();
                 if (!password) {
-                    showToast('Please enter your password.', 'error');
+                    showToast(translations['toast-enter-password-error'], 'error');
                     return;
                 }
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const updatedEmail = document.getElementById('email').value.trim();
 
                     if (!updatedFirstName || !updatedLastName || !updatedDob || !updatedUsername || !updatedEmail) {
-                        showToast('All fields are required. Please complete the form.', 'error');
+                        showToast(translations['toast-all-fields-required-error'], 'error');
                         return;
                     }
 
@@ -116,11 +116,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         await user.updateEmail(updatedEmail);
                     }
 
-                    showToast('Profile updated successfully!', 'success');
+                    showToast(translations['toast-profile-updated-success'], 'success');
                     passwordModal.style.display = 'none'; // Close the modal
                 } catch (error) {
                     console.error('Error updating user data:', error);
-                    showToast('Incorrect password. Please try again.', 'error');
+                    showToast(translations['toast-incorrect-password-error'], 'error');
                 }
             });
         } else {
