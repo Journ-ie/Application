@@ -22,24 +22,14 @@ onAuthStateChanged(auth, (user) => {
     const mainContentElement = document.getElementById('main-content');
 
     if (user) {
-        console.log('User is signed in');
 
-        // Breaks registration if uncommented, TODO 
-        /*
-        if (window.location.pathname === '/sign-in.html') {
-            window.location.href = '/journal.html';
-        } */
-
-        // Show main content if not signing out
         if (loadingElement && mainContentElement) {
             loadingElement.style.display = 'none';
             mainContentElement.style.display = 'block';
         }
     
     } else {
-        console.log('No user is signed in');
 
-        // Redirect to sign-in if trying to access restricted pages
         if (window.location.pathname === '/journal.html' || window.location.pathname === '/log.html' || window.location.pathname === '/setting.html') {
             window.location.href = '/sign-in.html';
         } else {
