@@ -109,13 +109,13 @@ function createPostElement(postData, postId) {
         postMedia.classList.add('three-or-more-images');
     }
 
-    // Clear any existing content in postMedia to avoid duplicates
+    // clear any existing content in postMedia to avoid duplicates
     postMedia.innerHTML = '';
 
     mediaUrls.slice(0, 2).forEach((url) => {
         let mediaElement;
 
-        // Check for video extensions in the entire URL
+        // check for video extensions in the entire URL
         const lowercasedUrl = url.toLowerCase();
         if (lowercasedUrl.includes('.mp4') || lowercasedUrl.includes('.webm') || lowercasedUrl.includes('.avi')) {
             mediaElement = document.createElement('video');
@@ -203,10 +203,8 @@ function handleFullscreenChange() {
     const videoElements = document.querySelectorAll('.post-media video');
     videoElements.forEach(video => {
         if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
-            // Video is in fullscreen mode
             video.style.objectFit = 'contain';
         } else {
-            // Video is not in fullscreen mode
             video.style.objectFit = 'cover';
         }
     });
@@ -243,33 +241,29 @@ function openMediaViewer(mediaUrls, startIndex) {
         displayMedia(currentMediaIndex);
     }
 
-    // Add event listener to handle left and right clicks
     viewer.addEventListener('click', (event) => {
         const rect = viewer.getBoundingClientRect();
         const clickX = event.clientX - rect.left;
 
         if (clickX < rect.width / 2) {
-            showPrev(); // Left side click
+            showPrev(); 
         } else {
-            showNext(); // Right side click
+            showNext(); 
         }
     });
 
     displayMedia(currentMediaIndex);
-    viewer.style.display = 'flex'; // Use flex to center content
+    viewer.style.display = 'flex'; 
 
-    // Close the viewer when the close button is clicked
     document.querySelector('.close').onclick = function() {
         viewer.style.display = 'none';
         viewerImg.src = '';
         viewerVideo.src = '';
     };
 
-        // Close the viewer when clicking outside the media or pressing escape
     viewer.addEventListener('click', (event) => {
         const clickedElement = event.target;
 
-        // Check if the clicked element is the viewer (background) and not the image/video
         if (clickedElement === viewer || clickedElement === document.querySelector('.close')) {
             viewer.style.display = 'none';
             viewerImg.src = '';
@@ -285,8 +279,6 @@ function openMediaViewer(mediaUrls, startIndex) {
         }
     });
 }
-
-
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
