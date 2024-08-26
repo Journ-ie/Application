@@ -148,7 +148,7 @@ function createPostElement(postData, postId) {
         seeMoreElement.classList.add('see-more');
 
         const seeMoreText = document.createElement('span');
-        seeMoreText.textContent = `See More (${mediaUrls.length - 2})`;
+        seeMoreText.textContent = `See More`;
 
         seeMoreElement.style.backgroundImage = `url(${mediaUrls[2]})`;
 
