@@ -168,9 +168,10 @@ input[type="file"] {
     width: 100%;
     height: 100px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    
 }
 
 .caption-content #messageBox {
@@ -188,4 +189,25 @@ input[type="file"] {
     border: none; 
     outline: none; 
     box-shadow: none; 
+}
+
+.remove-media {
+    background-color: #33313D; 
+    color: #ffffff; 
+    border: none; 
+    border-radius: 0 0 5px 5px; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    font-size: 12px; 
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.remove-media:hover {
+    background-color: #42404e;
+}
+
+.remove-media:focus {
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(129, 151, 128, 0.5); 
 }
