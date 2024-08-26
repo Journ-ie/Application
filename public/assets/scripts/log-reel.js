@@ -164,7 +164,7 @@ function createPostElement(postData, postId) {
 
 async function fetchPosts(user) {
     const postsContainer = document.querySelector('.post-reel .divide');
-    const noLogsMessage = document.getElementById('no-logs-message');
+    const noLogsMessage = document.getElementById('no-logs');
 
     const postsCollection = collection(db, 'users', user.uid, 'logs');
     const postDocs = await getDocs(postsCollection);
