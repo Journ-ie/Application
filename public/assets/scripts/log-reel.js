@@ -272,10 +272,6 @@ function openMediaViewer(mediaUrls, startIndex) {
             const rect = mediaElement.getBoundingClientRect();
             const clickX = event.clientX - rect.left;
 
-        if (clickX < rect.width / 2) {
-            showPrev(); 
-        } else {
-            showNext(); 
             console.log(rect);
     
             if (clickX < rect.width / 3) {
