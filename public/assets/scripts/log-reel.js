@@ -131,18 +131,23 @@ function createPostElement(postData, postId) {
         postMedia.appendChild(mediaElement);
     });
 
-    if (mediaUrls.length > 3) {
+    if (mediaUrls.length > 2) {
         const seeMoreElement = document.createElement('a');
         seeMoreElement.href = "#";
         seeMoreElement.classList.add('see-more');
 
         const seeMoreText = document.createElement('span');
-        seeMoreText.textContent = `See More (${mediaUrls.length - 3})`;
+        seeMoreText.textContent = `See More (${mediaUrls.length - 2})`;
 
         seeMoreElement.style.backgroundImage = `url(${mediaUrls[2]})`;
 
         seeMoreElement.appendChild(seeMoreText);
         postMedia.appendChild(seeMoreElement);
+
+        seeMoreElement.addEventListener('click', function(event) {
+            event.preventDefault();
+            openMediaViewer(mediaUrls, 2);
+        });
     }
 
     const postLabels = document.createElement('div');
@@ -206,6 +211,53 @@ function handleFullscreenChange() {
         }
     });
 }
+
+// Open the media viewer panel
+function openMediaViewer(mediaUrls, startIndex) {
+    const viewer = document.getElementById('media-viewer');
+    const viewerImg = document.getElementById('media-viewer-img');
+    const viewerVideo = document.getElementById('media-viewer-video');
+    let currentMediaIndex = startIndex;
+
+    function displayMedia(index) {
+        const mediaUrl = mediaUrls[index];
+        const lowercasedUrl = mediaUrl.toLowerCase();
+
+        if (lowercasedUrl.includes('.mp4') || lowercasedUrl.includes('.webm') || lowercasedUrl.includes('.avi')) {
+            viewerVideo.src = mediaUrl;
+            viewerVideo.style.display = "block";
+            viewerImg.style.display = "none";
+        } else {
+            viewerImg.src = mediaUrl;
+            viewerImg.style.display = "block";
+            viewerVideo.style.display = "none";
+        }
+    }
+
+    function showNext() {
+        currentMediaIndex = (currentMediaIndex + 1) % mediaUrls.length;
+        displayMedia(currentMediaIndex);
+    }
+
+    function showPrev() {
+        currentMediaIndex = (currentMediaIndex - 1 + mediaUrls.length) % mediaUrls.length;
+        displayMedia(currentMediaIndex);
+    }
+
+    document.querySelector('.next').onclick = showNext;
+    document.querySelector('.prev').onclick = showPrev;
+
+    displayMedia(currentMediaIndex);
+    viewer.style.display = 'block';
+
+    // Close the viewer when the close button is clicked
+    document.querySelector('.close').onclick = function() {
+        viewer.style.display = 'none';
+        viewerImg.src = '';
+        viewerVideo.src = '';
+    };
+}
+
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
