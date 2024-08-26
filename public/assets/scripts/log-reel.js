@@ -32,6 +32,15 @@ function createPostElement(postData, postId) {
     dropdownToggle.classList.add('dropbtn');
     dropdownToggle.innerHTML = '<i class="fa-solid fa-ellipsis-vertical"></i>';
 
+    // Prevent page refresh or any other default behavior
+    dropdownToggle.addEventListener('click', (event) => {
+        event.preventDefault();  // Prevent the default action
+        event.stopPropagation(); // Stop the event from bubbling up
+    });
+
+    // Ensure the dropdown content is appended after the toggle button
+    dropdown.appendChild(dropdownToggle);
+
     const dropdownContent = document.createElement('div');
     dropdownContent.classList.add('dropdown-content');
 
@@ -110,12 +119,14 @@ function createPostElement(postData, postId) {
     }
 
     // clear any existing content in postMedia to avoid duplicates
+    
     postMedia.innerHTML = '';
 
     mediaUrls.slice(0, 2).forEach((url) => {
         let mediaElement;
 
         // check for video extensions in the entire URL
+        
         const lowercasedUrl = url.toLowerCase();
         if (lowercasedUrl.includes('.mp4') || lowercasedUrl.includes('.webm') || lowercasedUrl.includes('.avi')) {
             mediaElement = document.createElement('video');
@@ -203,8 +214,10 @@ function handleFullscreenChange() {
     const videoElements = document.querySelectorAll('.post-media video');
     videoElements.forEach(video => {
         if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+           
             video.style.objectFit = 'contain';
         } else {
+            
             video.style.objectFit = 'cover';
         }
     });
@@ -217,40 +230,62 @@ function openMediaViewer(mediaUrls, startIndex) {
     let currentMediaIndex = startIndex;
 
     function displayMedia(index) {
+        viewerVideo.pause();
+    
         const mediaUrl = mediaUrls[index];
         const lowercasedUrl = mediaUrl.toLowerCase();
-
+    
         if (lowercasedUrl.includes('.mp4') || lowercasedUrl.includes('.webm') || lowercasedUrl.includes('.avi')) {
-            viewerVideo.src = mediaUrl;
             viewerVideo.style.display = "block";
             viewerImg.style.display = "none";
+    
+            viewerVideo.src = mediaUrl;
         } else {
             viewerImg.src = mediaUrl;
             viewerImg.style.display = "block";
             viewerVideo.style.display = "none";
+    
+            viewerVideo.src = '';
         }
     }
-
+    
     function showNext() {
         currentMediaIndex = (currentMediaIndex + 1) % mediaUrls.length;
         displayMedia(currentMediaIndex);
     }
-
+    
     function showPrev() {
         currentMediaIndex = (currentMediaIndex - 1 + mediaUrls.length) % mediaUrls.length;
         displayMedia(currentMediaIndex);
     }
 
     viewer.addEventListener('click', (event) => {
-        const rect = viewer.getBoundingClientRect();
-        const clickX = event.clientX - rect.left;
+        let mediaElement;
+    
+        if (viewerImg.style.display === "block") {
+            mediaElement = viewerImg;
+        } else if (viewerVideo.style.display === "block") {
+            mediaElement = viewerVideo;
+        }
+    
+        if (mediaElement) {
+            const rect = mediaElement.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
 
         if (clickX < rect.width / 2) {
             showPrev(); 
         } else {
             showNext(); 
+            console.log(rect);
+    
+            if (clickX < rect.width / 3) {
+                showPrev(); 
+            } else if (clickX > (rect.width * 2) / 3) {
+                showNext(); 
+            }
         }
     });
+    
 
     displayMedia(currentMediaIndex);
     viewer.style.display = 'flex'; 
