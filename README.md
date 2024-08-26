@@ -42,17 +42,17 @@ Please find information about the web application's project plan, code and docum
 
 ### Open Project Locally
 
-    ```
+   ```
         firebase serve
-    ```
+   ```
 
 ### Deployment
 
 Check the following link to try the website: [Journie Deployed Website](https://journie-d4114.web.app/)
 
-    ```
+   ```
         firebase deploy
-    ```
+   ```
 
 ## Demonstration 
 
