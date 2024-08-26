@@ -313,6 +313,29 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
 }
+
+.post-media.three-or-more-images img,
+.post-media.three-or-more-images video {
+    width: 100%;
+    height: 100%; /* Ensure that the media element fills its grid area */
+    border-radius: 5px;
+    object-fit: cover; /* Ensures the video/image covers the grid cell completely */
+    display: block;
+}
+
+.post-media.three-or-more-images video {
+    grid-column: 1 / -1; /* Ensure video takes up the full width of the first row */
+    grid-row: 1 / 2; /* Ensure video takes up the first row, similar to the first image */
+}
+
+/* Existing CSS that you should keep, possibly with updated rules */
+.post-media img,
+.post-media video {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
 .post-media.three-or-more-images img:nth-child(1) {
     grid-column: 1 / -1;
     grid-row: 1 / 2;
@@ -397,7 +420,7 @@
     min-width: 400px;
     box-sizing: border-box;
     border-top: 1px solid #8DA891; 
-}
+}   
 
 #journal, .hero {
     padding-bottom: 0;

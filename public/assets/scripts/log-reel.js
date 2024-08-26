@@ -2,7 +2,7 @@ import { auth, db } from './init.js';
 import { collection, getDocs, doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
-function createPostElement(postData, postId) {
+export function createPostElement(postData, postId) {
     const postsContainer = document.querySelector('.post-reel .divide');
 
     const postItem = document.createElement('div');
@@ -32,13 +32,12 @@ function createPostElement(postData, postId) {
     dropdownToggle.classList.add('dropbtn');
     dropdownToggle.innerHTML = '<i class="fa-solid fa-ellipsis-vertical"></i>';
 
-    // Prevent page refresh or any other default behavior
+    // prevent page refresh or any other default behavior
     dropdownToggle.addEventListener('click', (event) => {
-        event.preventDefault();  // Prevent the default action
-        event.stopPropagation(); // Stop the event from bubbling up
+        event.preventDefault(); 
+        event.stopPropagation();
     });
 
-    // Ensure the dropdown content is appended after the toggle button
     dropdown.appendChild(dropdownToggle);
 
     const dropdownContent = document.createElement('div');
@@ -174,7 +173,6 @@ function createPostElement(postData, postId) {
 }
 
 async function fetchPosts(user) {
-    const postsContainer = document.querySelector('.post-reel .divide');
     const noLogsMessage = document.getElementById('no-logs');
 
     const postsCollection = collection(db, 'users', user.uid, 'logs');

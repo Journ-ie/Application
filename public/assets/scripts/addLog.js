@@ -5,6 +5,15 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstati
 
 const storage = getStorage();
 
+// convert titles to keywords to store for searching
+function preprocessTitle(title) {
+    return title
+        .toLowerCase() 
+        .replace(/[^\w\s]/g, '')
+        .split(' ')
+        .filter(word => word.length > 0); 
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     let selectedFiles = []; 
     const mediaPreviewContainer = document.getElementById('media-preview'); 
@@ -169,8 +178,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 message: message,
                 labels: selectedLabels,
                 media: mediaUrls,
-                createdAt: Timestamp.now()
+                createdAt: Timestamp.now(),
+                titleKeywords: preprocessTitle(logTitle)
             }, { merge: true });
+            
 
             showToast(translations['toast-submit-log-success'], 'success');
 
