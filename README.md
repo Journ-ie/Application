@@ -10,7 +10,7 @@ With Journ.ie, users can track their personal growth over time, revisit memories
 Please find information about the web application's project plan, code and documentation on GitHub at the following links:
 - [Code and Development](https://github.com/Journ-ie/Application)
 - [Documentation](https://github.com/Journ-ie/Documentation)
-- [Project Planning](https://github.com/orgs/Journ-ie/projects/1/views/7)
+- [Project Planning](https://github.com/orgs/Journ-ie/projects/1/views/1)
 
 ## Set Up Instructions
 
