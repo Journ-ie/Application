@@ -212,7 +212,6 @@ function handleFullscreenChange() {
     });
 }
 
-// Open the media viewer panel
 function openMediaViewer(mediaUrls, startIndex) {
     const viewer = document.getElementById('media-viewer');
     const viewerImg = document.getElementById('media-viewer-img');
@@ -244,11 +243,20 @@ function openMediaViewer(mediaUrls, startIndex) {
         displayMedia(currentMediaIndex);
     }
 
-    document.querySelector('.next').onclick = showNext;
-    document.querySelector('.prev').onclick = showPrev;
+    // Add event listener to handle left and right clicks
+    viewer.addEventListener('click', (event) => {
+        const rect = viewer.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+
+        if (clickX < rect.width / 2) {
+            showPrev(); // Left side click
+        } else {
+            showNext(); // Right side click
+        }
+    });
 
     displayMedia(currentMediaIndex);
-    viewer.style.display = 'block';
+    viewer.style.display = 'flex'; // Use flex to center content
 
     // Close the viewer when the close button is clicked
     document.querySelector('.close').onclick = function() {
@@ -256,7 +264,28 @@ function openMediaViewer(mediaUrls, startIndex) {
         viewerImg.src = '';
         viewerVideo.src = '';
     };
+
+        // Close the viewer when clicking outside the media or pressing escape
+    viewer.addEventListener('click', (event) => {
+        const clickedElement = event.target;
+
+        // Check if the clicked element is the viewer (background) and not the image/video
+        if (clickedElement === viewer || clickedElement === document.querySelector('.close')) {
+            viewer.style.display = 'none';
+            viewerImg.src = '';
+            viewerVideo.src = '';
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            viewer.style.display = 'none';
+            viewerImg.src = '';
+            viewerVideo.src = '';
+        }
+    });
 }
+
 
 
 function showToast(message, type = 'success') {
