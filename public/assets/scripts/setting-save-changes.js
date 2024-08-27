@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
 
                     showToast(translations['toast-profile-updated-success'], 'success');
-                    passwordModal.style.display = 'none'; // Close the modal
+                    passwordModal.style.display = 'none';
                 } catch (error) {
                     console.error('Error updating user data:', error);
                     showToast(translations['toast-incorrect-password-error'], 'error');
