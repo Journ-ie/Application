@@ -127,5 +127,7 @@
     "toast-invalid-email-address-error": "Invalid email address.",
     "toast-incorrect-email-password-error": "Incorrect email or password. Please try again.",
     "sign-in_register": "Sign In/Sign Up",
-    "size-error": "My apologies, this website does not support mobile versions yet."
+    "size-error": "My apologies, this website does not support mobile versions yet.",
+    "toast-invalid-age-error": "You must be at least 13 years old to create an account."
+
 }
