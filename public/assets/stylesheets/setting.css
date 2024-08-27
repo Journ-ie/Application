@@ -218,10 +218,6 @@ button:hover {
     align-items: center;
 }
 
-.profile-picture {
-    display: block;
-}
-
 .user-name {
     display: none;
     padding: 0 10px;

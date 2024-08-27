@@ -62,16 +62,23 @@ export function createPostElement(postData, postId) {
 
     deleteButton.addEventListener('click', async (event) => {
         event.preventDefault();
-
+    
         const confirmDelete = confirm("Are you sure you want to delete this post?");
-
+    
         if (confirmDelete) {
             try {
                 const postDocRef = doc(db, 'users', auth.currentUser.uid, 'logs', postId);
                 await deleteDoc(postDocRef);
-            
                 postItem.remove();
+                
+                const postsContainer = document.querySelector('.post-reel .divide');
 
+                if (postsContainer.children.length === 0) {
+                    document.getElementById('no-logs').style.display = 'flex';
+                }
+
+                adjustJournalHeight();
+    
                 showToast(translations['toast-delete-post-success'], 'success');
             } catch (error) {
                 console.error("Error deleting post:", error);
@@ -174,14 +181,15 @@ export function createPostElement(postData, postId) {
 
 async function fetchPosts(user) {
     const noLogsMessage = document.getElementById('no-logs');
-
     const postsCollection = collection(db, 'users', user.uid, 'logs');
     const postDocs = await getDocs(postsCollection);
 
+    const postsContainer = document.querySelector('.post-reel .divide');
+    postsContainer.innerHTML = ''; 
+
     if (postDocs.empty) {
         console.log('No logs found for this user.');
-
-        noLogsMessage.style.display = 'block';
+        noLogsMessage.style.display = 'flex'; 
         return;
     }
 
@@ -193,14 +201,44 @@ async function fetchPosts(user) {
     noLogsMessage.style.display = 'none';
 }
 
+function adjustJournalHeight() {
+    const journalHero = document.querySelector('#journal.hero');
+    const postReel = document.querySelector('.post-reel');
+
+    if (!postReel) {
+        console.error('No post-reel element found');
+        return;
+    }
+    
+    const postItems = postReel.querySelectorAll('.post-items');
+
+    if (postItems.length < 1) {
+        journalHero.style.minHeight = 'auto';
+    } else {
+        journalHero.style.minHeight = 'calc(100vh - 296px)';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    adjustJournalHeight();
+
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             await fetchPosts(user);
+            adjustJournalHeight(); // Adjust after fetching posts
         } else {
             window.location.href = 'sign-in.html';
         }
     });
+
+    // Re-adjust height when a post is added or removed
+    const observer = new MutationObserver(adjustJournalHeight);
+    const postReel = document.querySelector('.post-reel');
+    if (postReel) {
+        observer.observe(postReel, { childList: true });
+    } else {
+        console.error('No post-reel element found for observer');
+    }
 });
 
 document.addEventListener('fullscreenchange', handleFullscreenChange);
