@@ -15,8 +15,8 @@
     <!--Stylesheets-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="assets/stylesheets/web-main.css">
-    <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
     <link rel="stylesheet" href="assets/stylesheets/home.css">
+    <link rel="stylesheet" href="assets/stylesheets/mobile-main.css">
     
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
@@ -35,135 +35,139 @@
     <button onclick="loadLanguage('fr')" data-key="language-fr">French</button>
     <h1 data-key="sample-text">Testing Different Languages</h1>
      -->
+    <div class="standard">
+        <header>
+            <div class="nav-bar">
+                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
 
-    <header>
-        <div class="nav-bar">
-            <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo">
+                <div class="nav-items">
+                    <div class="nav-items-section">
+                        <nav>
+                            <ul class="nav-links">
+                                <li><a href="/" data-key="nav-home">Home</a></li>
+                                <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                                <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                            </ul>
+                        </nav>
+                        <a href="sign-in.html" id='sign-in-button' class="login-button-link" data-key="sign-in_register">Sign In/Sign Up</a>
+                    </div>
+                    <a href="journal.html">
+                        <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
+                    </a>
+                    <div class="dropdown">
+                        <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
 
-            <div class="nav-items">
-                <div class="nav-items-section">
-                    <nav>
-                        <ul class="nav-links">
-                            <li><a href="/" data-key="nav-home">Home</a></li>
-                            <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
-                            <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
-                        </ul>
-                    </nav>
-                    <a href="sign-in.html" id='sign-in-button' class="login-button-link" data-key="sign-in">Sign In</a>
-                </div>
-                <a href="journal.html">
-                    <img id="profile-picture" src="assets/imgs/profile-picture-placeholder.jpg" alt="" data-key="profile-picture" class="profile-picture">
-                </a>
-                <div class="dropdown">
-                    <button class="dropbtn"><i class="fa-solid fa-caret-down"></i></button>
+                        <div class="dropdown-content">
+                            <div class="languages">
+                                <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
+                                <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
+                                <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
+                            </div>
 
-                    <div class="dropdown-content">
-                        <div class="languages">
-                            <h4 class="menu-title" data-key="language-option">Language Preferences</h4>
-                            <a href="#" onclick="loadLanguage('en')" data-key="language-en">English</a>
-                            <a href="#" onclick="loadLanguage('fr')" data-key="language-fr">French</a>
-                        </div>
-
-                        <div class="profile-menu">
-                            <a href="setting.html" data-key="settings">Settings</a>
-                            <a href="sign-in.html" data-key="log-out" id="logout-link">Log Out</a>
+                            <div class="profile-menu">
+                                <a href="setting.html" data-key="settings">Settings</a>
+                                <a href="sign-in.html" data-key="log-out" id="logout-link">Log Out</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <section id="home" class="hero">
-        <h1 data-key="project-title">Journ.ie</h1>
-        <p data-key="project-moto">'Solas Anama'</p>
-    </section>
+        <section id="home" class="hero">
+            <h1 data-key="project-title">Journ.ie</h1>
+            <p data-key="project-moto">'Solas Anama'</p>
+        </section>
 
-    <section id="features" class="hero">
-        <div class="feature-items">
-            <img src="assets/imgs/feature-placeholder.jpg" alt="" data-key="features" class="hero">
+        <section id="features" class="hero">
+            <div class="feature-items">
+                <img src="assets/imgs/feature-placeholder.jpg" alt="" data-key="features" class="hero">
 
-            <div class="cards">
-                <div class="card">
-                    <h3 data-key="journaling-tools">Journaling Tools</h3>
-                    <p data-key="journaling-tools-paragraph">Journaling tools empower users to create and manage journal entries seamlessly, incorporating text, photos, videos, and various multimedia elements. These tools provide a versatile platform for capturing life’s moments and reflections in rich, multimedia formats.</p>
-                </div>
-                <div class="card">
-                    <h3 data-key="mood-tracker">Mood Tracker</h3>
-                    <p data-key="mood-tracker-paragraph">Users can log their mood or emotional state with each entry, enabling comprehensive mood tracking over time. This feature provides valuable insights into emotional patterns and well-being, enhancing personal growth and self-discovery.</p>
-                </div>
-                <div class="card">
-                    <h3 data-key="progress-tracker">Progress Tracker</h3>
-                    <p data-key="progress-tracker-paragraph">With built-in timeline and goal-setting tools, users can track personal growth and achievements, providing valuable insights into their progress and helping them stay motivated on their journey of self-discovery.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="mission" class="hero">
-        <div class="mission-items">
-            <img src="assets/imgs/mission-placeholder.jpg" alt="" data-key="nav-mission" class="hero">
-            <div class="paragrapgh">
-                <h2 data-key="nav-mission">Our Mission</h2>
-                <p data-key="nav-mission-paragraph">
-                    At Journ.ie, our mission is to provide a secure and intimate journaling platform where individuals can document, organise, 
-                    and cherish their life's moments. We believe in the power of personal reflection and its profound impact on well-being and growth. 
-                    By offering a safe space free from public exposure, we enable users to express themselves freely and authentically. 
-                    At Journ.ie, we are more than just a journaling platform; we are a community committed to personal growth and self-discovery. 
-                    Join us to connect deeply with your inner self and pursue your life goals with confidence and clarity.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="about-us"></section>
-
-    <footer>
-        <div class="footer-items">
-            <div class="footer-links">
-                <div class="column">
-                    <h3 data-key="nav-home">Home</h3>
-                    <ul>
-                        <li><a href="/#features" data-key="features">Features</a></li>
-                        <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
-                        <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3 data-key="journal">Journal</h3>
-                    <ul>
-                        <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
-                        <li><a href="setting.html" data-key="profile">Profile</a></li>
-                        <li><a href="setting.html" data-key="account">Account</a></li>
-                        
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3 data-key="user-guide">User Guide</h3>
-                    <ul>
-                        <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
-                        <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
-                        <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
-                        <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3 data-key="help">Help</h3>
-                    <ul>
-                        <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
-                        <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
-                    </ul>
+                <div class="cards">
+                    <div class="card">
+                        <h3 data-key="journaling-tools">Journaling Tools</h3>
+                        <p data-key="journaling-tools-paragraph">Journaling tools empower users to create and manage journal entries seamlessly, incorporating text, photos, videos, and various multimedia elements. These tools provide a versatile platform for capturing life’s moments and reflections in rich, multimedia formats.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-key="mood-tracker">Mood Tracker</h3>
+                        <p data-key="mood-tracker-paragraph">Users can log their mood or emotional state with each entry, enabling comprehensive mood tracking over time. This feature provides valuable insights into emotional patterns and well-being, enhancing personal growth and self-discovery.</p>
+                    </div>
+                    <div class="card">
+                        <h3 data-key="progress-tracker">Progress Tracker</h3>
+                        <p data-key="progress-tracker-paragraph">With built-in timeline and goal-setting tools, users can track personal growth and achievements, providing valuable insights into their progress and helping them stay motivated on their journey of self-discovery.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="footer-bottom">
-                <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
-                <p data-key="signature">© Zedev 2024</p>
+        <section id="mission" class="hero">
+            <div class="mission-items">
+                <img src="assets/imgs/mission-placeholder.jpg" alt="" data-key="nav-mission" class="hero">
+                <div class="paragrapgh">
+                    <h2 data-key="nav-mission">Our Mission</h2>
+                    <p data-key="nav-mission-paragraph">
+                        At Journ.ie, our mission is to provide a secure and intimate journaling platform where individuals can document, organise, 
+                        and cherish their life's moments. We believe in the power of personal reflection and its profound impact on well-being and growth. 
+                        By offering a safe space free from public exposure, we enable users to express themselves freely and authentically. 
+                        At Journ.ie, we are more than just a journaling platform; we are a community committed to personal growth and self-discovery. 
+                        Join us to connect deeply with your inner self and pursue your life goals with confidence and clarity.
+                    </p>
+                </div>
             </div>
-        </div>
-    
+        </section>
+
+        <section id="about-us"></section>
+
+        <footer>
+            <div class="footer-items">
+                <div class="footer-links">
+                    <div class="column">
+                        <h3 data-key="nav-home">Home</h3>
+                        <ul>
+                            <li><a href="/#features" data-key="features">Features</a></li>
+                            <li><a href="/#mission" data-key="nav-mission">Our Mission</a></li>
+                            <li><a href="/#about-us" data-key="nav-about">About Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3 data-key="journal">Journal</h3>
+                        <ul>
+                            <li><a href="journal.html" data-key="journal-book">Journal Book</a></li>
+                            <li><a href="setting.html" data-key="profile">Profile</a></li>
+                            <li><a href="setting.html" data-key="account">Account</a></li>
+                            
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3 data-key="user-guide">User Guide</h3>
+                        <ul>
+                            <li><a href="help.html#journal-about" data-key="journal">Journal</a></li>
+                            <li><a href="help.html#user-dashboard-about" data-key="user-dashboard">User Dashboard</a></li>
+                            <li><a href="help.html#entries-about" data-key="entries">Entries</a></li>
+                            <li><a href="help.html#mood-tracker-about" data-key="mood-tracker">Mood Tracker</a></li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3 data-key="help">Help</h3>
+                        <ul>
+                            <li><a href="help.html#contact-us" data-key="contact-us">Contact Us</a></li>
+                            <li><a href="help.html#terms-conditions" data-key="terms-conditions">Terms and Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <img src="assets/imgs/logo.png" alt="Journ.ie Logo" class="logo-footer">
+                    <p data-key="signature">© Zedev 2024</p>
+                </div>
+            </div>
         
-    </footer>
-
+            
+        </footer>
+    </div>
+    <div class="mobile-warning">
+        <h1 data-key="size-error">My apologies, this website does not support mobile versions yet.</h1>
+    </div>
 </body>
+
 </html>

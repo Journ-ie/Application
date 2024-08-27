@@ -125,5 +125,7 @@
     "toast-incorrect-password-error": "Incorrect password. Please try again.",
     "toast-no-user-found-error": "No user found with this email.",
     "toast-invalid-email-address-error": "Invalid email address.",
-    "toast-incorrect-email-password-error": "Incorrect email or password. Please try again."
+    "toast-incorrect-email-password-error": "Incorrect email or password. Please try again.",
+    "sign-in_register": "Sign In/Sign Up",
+    "size-error": "My apologies, this website does not support mobile versions yet."
 }
