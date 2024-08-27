@@ -56,7 +56,7 @@ Check the following link to try the website: [Journie Deployed Website](https://
 
 ## Demonstration 
 
-Please find the demonstration video on YouTube via the following link: [Journie Demo | YT](http://www.youtube.com/sample-video)
+Please find the demonstration video on YouTube via the following link: [Journie Demo | YT](https://youtu.be/JF_TQtBxIns)
 
 
  
