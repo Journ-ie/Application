@@ -24,6 +24,12 @@ document.querySelector('#register-form form').addEventListener('submit', async (
         return;
     }
 
+    if (calculateAge(dob) < 13) {
+        showToast(translations['toast-invalid-age-error'], 'error');
+        return;
+    }
+
+    
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
@@ -94,6 +100,9 @@ document.querySelector('#sign-in-form').addEventListener('submit', (event) => {
 document.addEventListener("DOMContentLoaded", function() {
     const signInForm = document.getElementById("sign-in-form");
     const registerForm = document.getElementById("register-form");
+    const today = new Date().toISOString().split('T')[0];
+
+    document.getElementById('dob').setAttribute('max', today);
 
     document.getElementById("create-account-btn").addEventListener("click", function() {
         signInForm.style.display = "none";
@@ -106,6 +115,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function calculateAge(dob) {
+    const today = new Date();
+    const birthDate = new Date(dob); 
+    if (isNaN(birthDate.getTime())) {
+        console.error('Invalid date format for dob:', dob);
+        return null;
+    }
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
 
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
